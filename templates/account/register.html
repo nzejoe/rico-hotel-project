@@ -4,22 +4,22 @@
 
 {% block content %}
     <div>
-    <h1>Register</h1>
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        {% for field in form %}
-        <div>
-        {{field.label}}
-        {{ field }}
-        {{ field.error }}
-        </div>
-        {% endfor %}
-        <button type="submit">register</button>
-    </form>
-     <small>
-        Already have an account? 
-        <a href="{% url 'account_login' %}">Log in</a>
+        <h1>Register</h1>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+            <div>
+            {{field.label}}
+            {{ field }}
+            {{ field.error }}
+            </div>
+            {% endfor %}
+            <button type="submit">register</button>
+        </form>
+        <small>
+            Already have an account? 
+            <a href="{% url 'login' %}">Log in</a>
         </small>
     </div>
 {% endblock content %}

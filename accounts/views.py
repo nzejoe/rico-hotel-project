@@ -1,7 +1,7 @@
 from django.contrib import auth
 from django.http.request import RAISE_ERROR
 from django.shortcuts import redirect, render
-from django.http.response import HttpResponse
+from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
@@ -21,48 +21,57 @@ def home(request):
 
 def account_login(request):
 
-    if request.method == "POST":
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+    if request.user.is_authenticated:  # if already logged in
+        return redirect(reverse('home'))
+    else:
 
-        account = authenticate(email=email, password=password)
-        if account is not None:
-            login(request, account)
-            messages.success(request, 'You have been logged in succesfully!')
-            return redirect('/')
-        else:
-            messages.error(request, 'User or password is invlaid!')
+        if request.method == "POST":
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+
+            account = authenticate(email=email, password=password)
+            if account is not None:
+                login(request, account)
+                messages.success(request, 'You have been logged in succesfully!')
+                return redirect(reverse('home'))
+            else:
+                messages.error(request, 'User or password is invlaid!')
     return render(request, 'account/account_login.html')
 
 
 def account_logout(request):
-    logout(request)
-    messages.success(request, 'You have been logged out successfully!')
-    return redirect('/account/account_login/')
+    if not request.user.is_authenticated:  # if already logged in
+        return redirect(reverse('login'))
+    else:
+        logout(request)
+        messages.success(request, 'You have been logged out successfully!')
+        return redirect(reverse('login'))
 
 
 
 def register(request):
-    
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-
-        if form.is_valid():
-            user = Account.objects.create_user(
-                username=form.cleaned_data.get('username'),
-                email=form.cleaned_data.get('email'),
-                password=form.cleaned_data.get('password'),
-            )
-            user.save()
-        
-            return redirect(f'/account/register_complete/?user={user.id}')
-        else:
-            print(form.errors)
+    if request.user.is_authenticated: # if already logged in
+        return redirect(reverse('home'))
     else:
-        form = RegisterForm()
-    context = {
-        'form': form
-    }
+        if request.method == 'POST':
+            form = RegisterForm(request.POST)
+
+            if form.is_valid():
+                user = Account.objects.create_user(
+                    username=form.cleaned_data.get('username'),
+                    email=form.cleaned_data.get('email'),
+                    password=form.cleaned_data.get('password'),
+                )
+                user.save()
+            
+                return redirect(reverse('register_complete')+f'?user={user.id}')
+            else:
+                print(form.errors)
+        else:
+            form = RegisterForm()
+        context = {
+            'form': form
+        }
 
     return render(request, 'account/register.html', context)
 
@@ -100,7 +109,7 @@ def register_complete(request):
             customerAccount.save()
 
             customer.save()
-            return redirect('/')
+            return redirect(reverse('login'))
     else:
         form = CustomerForm()
         

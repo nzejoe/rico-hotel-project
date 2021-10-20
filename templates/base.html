@@ -11,9 +11,9 @@
         {% block header %}
             {% if user.is_authenticated %}
                 <span> Welcome, {{ user.customer.first_name}}!</span>
-                <a href="{% url 'account_logout' %}">Log out</a>
+                <a href="{% url 'logout' %}">Log out</a>
             {% else %}
-                <a href="{% url 'account_login' %}">Log in</a>
+                <a href="{% url 'login' %}">Log in</a>
             {% endif %}
         {% endblock header %}
     </header>

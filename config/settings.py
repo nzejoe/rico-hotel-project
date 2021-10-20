@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # local apps
     'accounts',
     'customers',
+    'rooms',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # custom user config
 AUTH_USER_MODEL = 'accounts.Account'
+
+# media config.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media')

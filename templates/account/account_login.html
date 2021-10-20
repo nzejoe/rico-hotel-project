@@ -5,7 +5,7 @@
 {% block content %}
  <h4>Log in</h4>
     <div>
-    <form action="{% url 'account_login' %}" method="POST">
+    <form action="{% url 'login' %}" method="POST">
         {% include 'include/messages.html' %}
         {% csrf_token %}
         <div>
