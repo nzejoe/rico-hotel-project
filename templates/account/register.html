@@ -3,6 +3,7 @@
 {% block title %}Account register{% endblock title %}
 
 {% block content %}
+    <div>
     <h1>Register</h1>
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
@@ -16,4 +17,9 @@
         {% endfor %}
         <button type="submit">register</button>
     </form>
+     <small>
+        Already have an account? 
+        <a href="{% url 'account_login' %}">Log in</a>
+        </small>
+    </div>
 {% endblock content %}
