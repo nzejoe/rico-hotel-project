@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Room List | RPH{% endblock title %}
+
+{% block content %}
+    {% for room in rooms %}
+        <div class="room">
+            <img src="{{ room.photo.url }}" alt="{{ room.room_number }}" width="300px">
+            <p>{{ room.room_number }}</p>
+            <p>{{ room.room_type.name }}</p>
+            <p>{{ room.room_type.price }}</p>
+            <a href="{% url 'room_detail' room.room_id %}">read more</a>
+        </div>
+    {% endfor %}
+{% endblock content %}

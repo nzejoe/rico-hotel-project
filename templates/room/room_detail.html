@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ room.room_number }} | RPH{% endblock title %}
+
+{% block content %}
+    <div class="room__detail">
+        <img src="{{ room.photo.url }}" alt="{{ room.room_number }}" width="720px">
+        <p>{{ room.room_number }}</p>
+        <p>{{ room.room_type.name }}</p>
+        <p>{{ room.room_type.price }}</p>
+    </div>
+{% endblock content %}
