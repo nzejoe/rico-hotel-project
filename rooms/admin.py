@@ -10,6 +10,7 @@ class RoomTypeAdmin(admin.ModelAdmin):
 
 class RoomAdmin(admin.ModelAdmin):
     model = Room
+    populated_fields = {'slug': ('room_number', )}
     list_display = ['room_number', 'room_type', 'room_type']
 
 

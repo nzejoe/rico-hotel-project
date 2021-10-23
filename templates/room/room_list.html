@@ -9,7 +9,7 @@
             <p>{{ room.room_number }}</p>
             <p>{{ room.room_type.name }}</p>
             <p>{{ room.room_type.price }}</p>
-            <a href="{% url 'room_detail' room.room_id %}">read more</a>
+            <a href="{{ room.get_absolute_url }}">read more</a>
         </div>
     {% endfor %}
 {% endblock content %}
