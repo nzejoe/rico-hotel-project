@@ -17,7 +17,7 @@ class Customer(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    account = models.OneToOneField(Account, on_delete=models.CASCADE, related_name='customer')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, null=True, blank=True)
@@ -31,3 +31,7 @@ class Customer(models.Model):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
+
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
