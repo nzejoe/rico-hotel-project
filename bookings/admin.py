@@ -4,6 +4,6 @@ from .models import Booking
 
 class BookingAdmin(admin.ModelAdmin):
     madel = Booking
-    list_display = ['room_id', 'start_date', 'end_date', 'customer_id', 'status']
+    list_display = ['room', 'start_date', 'duration' ,'end_date', 'customer', 'status']
 
 admin.site.register(Booking, BookingAdmin)

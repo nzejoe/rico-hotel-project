@@ -11,6 +11,7 @@
         {% block header %}
             {% if user.is_authenticated %}
                 <span> Welcome, {{ user.customer.first_name}}!</span>
+                <a href="{% url 'my_bookings' %}">My bookings</a>
                 <a href="{% url 'logout' %}">Log out</a>
             {% else %}
                 <a href="{% url 'login' %}">Log in</a>

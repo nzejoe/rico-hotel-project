@@ -8,5 +8,6 @@
         <p>{{ room.room_number }}</p>
         <p>{{ room.room_type.name }}</p>
         <p>{{ room.room_type.price }}</p>
+        <a href="{% url 'book_room' room.slug %}">Book this room</a>
     </div>
 {% endblock content %}
