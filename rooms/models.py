@@ -37,8 +37,8 @@ class Room(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.SET_NULL, null=True, blank=True)
     person_capacity = models.IntegerField()
     floor = models.CharField(max_length=20, choices=FLOOR, default='Choose')
-    is_active = models.BooleanField(default=True)
     is_available = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
 
     def save(self, *args, **kwargs):
