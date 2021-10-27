@@ -10,7 +10,7 @@
         <p>{{ room.room_type.price }}</p>
         <a href="{% url 'book_room' room.slug %}">Book this room</a>
         {% if booked_dates  %}
-            <p>This room is Booked for the following days: </p>
+            <p>This room has been Booked for the following days: </p>
             <div class="booked_dates">
             {% for date in booked_dates %}
                 <span>{{ date }}</span>

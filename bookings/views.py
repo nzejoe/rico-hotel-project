@@ -33,7 +33,6 @@ def book_room(request, slug):
     if request.method == "POST":
         form = BookingForm(request.POST)
         if form.is_valid():
-
             start_date = form.cleaned_data.get('start_date')
             duration = int(form.cleaned_data.get('duration'))
             end_date = datetime.timedelta(days=duration) + start_date
@@ -48,10 +47,11 @@ def book_room(request, slug):
 
             booking.save()
 
+
             return redirect(reverse('my_bookings'))
     else:
         form = BookingForm()
-
+   
     context = {
         'form': form,
         'room': room,
