@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.db.models import fields
 
-from .models import BookedRoom, Booking, BookingDetail
+from .models import BookedRoom, Booking, BookingDetail, Payment
 
 class BookingAdmin(admin.ModelAdmin):
     madel = Booking
@@ -9,11 +10,13 @@ class BookingAdmin(admin.ModelAdmin):
 class BookingDetailInline(admin.TabularInline):
     model = BookedRoom
     extra = 0
-    readonly_fields = ['created', 'room', 'customer', 'start_date', 'duration', 'end_date']
+    readonly_fields = ['room', 'customer', 'start_date', 'end_date', 'cost', 'duration', 'total_cost']
 
 class BookingDetailAdmin(admin.ModelAdmin):
     model = BookingDetail
-    list_dispay = ['room', 'customer']
+    list_display = ['customer', 'created']
     inlines = [BookingDetailInline, ]
 
 admin.site.register(Booking, BookingAdmin)
+admin.site.register(BookingDetail, BookingDetailAdmin)
+admin.site.register(Payment)

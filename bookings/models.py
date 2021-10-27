@@ -9,9 +9,9 @@ from rooms.models import Room
 
 class Booking(models.Model):
     STATUS = (
-        ('pending', 'Pending'),
-        ('confirmed', 'Confirmed'),
-        ('cancelled', 'Cancelled')
+        ('Pending', 'Pending'),
+        ('Confirmed', 'Confirmed'),
+        ('Cancelled', 'Cancelled')
     )
     booking_id = models.UUIDField(
         primary_key=True,
@@ -40,7 +40,7 @@ class Payment(models.Model):
     created = models.DateTimeField()
 
     def __str__(self):
-        return self.customer
+        return self.customer.get_full_name()
 
 
 class BookingDetail(models.Model):
@@ -49,14 +49,14 @@ class BookingDetail(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, related_name='booking_detail')
     payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
     total_book = models.IntegerField()
     is_booked = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.customer
+        return self.customer.get_full_name()
 
 
 class BookedRoom(models.Model):
@@ -69,10 +69,11 @@ class BookedRoom(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, related_name='booked_room')
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     cost = models.DecimalField(decimal_places=2, max_digits=20)
+    total_cost = models.DecimalField(decimal_places=2, max_digits=20)
     start_date = models.DateField()
     duration = models.IntegerField()
     end_date = models.DateField()
-    created = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.room
+        return self.room.room_number
