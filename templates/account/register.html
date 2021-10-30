@@ -3,6 +3,7 @@
 {% block title %}Account register{% endblock title %}
 
 {% block content %}
+    {% include 'include/messages.html' %}
     <div>
         <h1>Register</h1>
         <form action="{% url 'register' %}" method="post">

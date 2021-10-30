@@ -4,7 +4,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 # helpers
-from helpers.utils import ValidateDate
+from utils.bookings import ValidateDate
 
 from .models import Booking
 

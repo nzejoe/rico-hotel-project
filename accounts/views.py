@@ -1,4 +1,5 @@
 from django.contrib import auth
+from django.core import mail
 from django.http.request import RAISE_ERROR
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -6,8 +7,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode, urlencode
 from django.utils.encoding import force_bytes
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 
 from accounts.models import Account
 from .forms import RegisterForm
@@ -63,8 +67,23 @@ def register(request):
                     password=form.cleaned_data.get('password'),
                 )
                 user.save()
-            
-                return redirect(reverse('register_complete')+f'?user={user.id}')
+
+                email = user.email
+
+                current_site = get_current_site(request)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                token = default_token_generator.make_token(user)
+                mail_subject = 'Account Verification'
+                domain = f'http://{current_site}{reverse("account_verification", kwargs={"uidb64":uid, "token":token})}'
+                context = {
+                    'site_domain': domain,
+                    'username': user.username,
+                }
+               
+                message = render_to_string('account/account_verification_email.html', context)
+                email_message = EmailMessage(mail_subject, message, to=[email,])
+                email_message.send()
+                return redirect(reverse('login') + f'?account=verification&email={email}')
             else:
                 print(form.errors)
         else:
@@ -75,16 +94,29 @@ def register(request):
 
     return render(request, 'account/register.html', context)
 
-def register_complete(request):
-    
+def account_verification(request, uidb64, token):
     try:
-        id = request.GET.get('user')
+        id = urlsafe_base64_decode(uidb64).decode()
         user = Account.objects.get(id=id)
-    except Account.DoesNotExist:
-        print('No user')
+    except (Account.DoesNotExist, ValueError, TypeError):
+        user = None
+    
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['user_id'] = id
+        return redirect('register_complete')
+    else:
+        messages.error(request, 'verification link has expired')
+        return redirect('register')
 
-    if request.method == 'POST': 
-        form = CustomerForm(request.POST)      
+def register_complete(request):
+    form = CustomerForm(None)
+    user_id = request.session.get('user_id')
+    try:
+        user = Account.objects.get(id=user_id)
+    except Account.DoesNotExist:
+        messages.error(request, 'Invalid link visited')
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
         if form.is_valid():
             customerAccount = Account.objects.get(email=request.POST['email'])
 
@@ -109,9 +141,10 @@ def register_complete(request):
             customerAccount.save()
 
             customer.save()
+            messages.success(request, 'Account registration completed successfully!')
             return redirect(reverse('login'))
-    else:
-        form = CustomerForm()
+        else:
+            form = CustomerForm(None)
         
     context = {
         'form': form,

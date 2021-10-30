@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import generic
 
 #utils
-from helpers.utils import get_booked_dates
+from utils.bookings import get_booked_dates
 
 from .models import Room
 from bookings.models import BookedRoom

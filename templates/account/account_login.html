@@ -3,7 +3,15 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
- <h4>Log in</h4>
+{% if request.GET.account == 'verification' %}
+    <div class="verification__msg">
+        <p>
+            Account verification has been sent to your email, [{{request.GET.email}}] <br/>
+            Please check your email box to verify and complete your registration.
+        </p>
+    </div>
+{% else %}
+    <h4>Log in</h4>
     <div>
     <form action="{% url 'login' %}" method="POST">
         {% include 'include/messages.html' %}
@@ -23,4 +31,5 @@
         <a href="{% url 'register' %}">Register</a>
         </small>
     </div>
+{% endif %}
 {% endblock content %}
