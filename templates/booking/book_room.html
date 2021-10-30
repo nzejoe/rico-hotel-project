@@ -7,10 +7,15 @@
         <form action="{% url 'book_room' room.slug %}" method="POST">
             {% csrf_token %}
             <p>{{ form.non_field_errors }}</p>
-            {{form.start_date.label}}
-            {{form.start_date}}
-            {{form.duration.label}}
-            {{form.duration}}
+            <div class="form-group">
+                {{form.start_date.label}}
+                {{form.start_date}}
+                {{form.start_date.errors}}
+            </div>
+            <div class="form-group">
+                {{form.duration.label}}
+                {{form.duration}}
+            </div>
             <input type="text" name="room_number" value={{ room.room_number }} hidden>
             <button type="submit">Book</button>
         </form>

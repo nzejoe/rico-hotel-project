@@ -36,6 +36,8 @@ class BookingForm(forms.ModelForm):
         entered_dates = ValidateDate(start_date=start_date, duration=duration, room_number=room)
 
         if entered_dates.not_valid():
+            # self._errors['start_date'] = self.error_class(
+            #     [f'{entered_dates.error_date} has already been booked for this room!'])
             raise ValidationError(f'{entered_dates.error_date} has already been booked for this room!')
 
         return super(BookingForm, self).clean()
