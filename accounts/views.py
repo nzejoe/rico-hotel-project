@@ -1,6 +1,4 @@
-from django.contrib import auth
-from django.core import mail
-from django.http.request import RAISE_ERROR
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -151,3 +149,69 @@ def register_complete(request):
         'reg_user': user
     }
     return render(request, 'account/register_complete.html', context)
+
+
+def password_reset(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+
+        try:
+            user = Account.objects.get(email=email)
+        except Account.DoesNotExist:
+            user = None
+
+        if user is not None:
+            current_site = get_current_site(request)
+            mail_subject = 'Account password reset'
+            context = {
+                'uid': urlsafe_base64_encode(force_bytes(user.id)),
+                'token': default_token_generator.make_token(user),
+                'domain': current_site,
+                'username': user.username
+            }
+            message = render_to_string('account/password_reset_email.html', context)
+            email_message = EmailMessage(mail_subject, message, to=[email,])
+            email_message.send()
+            return redirect('password_reset_done')
+        else:
+            messages.error(request, 'Account with this email does not exist!')
+            return redirect('password_reset')
+    return render(request, 'account/password_reset.html')
+
+
+def password_reset_done(request):
+    return render(request, 'account/password_reset_done.html')
+
+
+def password_reset_confirm(request, uidb64, token):
+
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account.objects.get(id=uid)
+    except(Account.DoesNotExist, TypeError, ValueError):
+        user = None
+    
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['id'] = uid
+        return redirect('password_reset_complete')
+    else:
+        messages.error(request, 'Invalid link')
+        return redirect('login')
+
+
+def password_reset_complete(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        if password == confirm_password:
+            id = request.session.get('id')
+            user = Account.objects.get(pk=id)
+            user.set_password(password)
+            user.save()
+            messages.success(request, 'You new password has been set. You can log in below.')
+            return redirect('login')
+        else:
+            messages.error(request, 'The two password did not match!')
+            return redirect('password_reset_complete')
+
+    return render(request, 'account/password_reset_complete.html')
