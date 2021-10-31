@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Rico Palace Hotel{% endblock title %}</title>
+    <style>
+        label, input{
+            display: block
+        }
+        input{
+            margin-bottom: 10px
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,6 +20,7 @@
             {% if user.is_authenticated %}
                 <span> Welcome, {{ user.customer.first_name}}!</span>
                 <a href="{% url 'my_bookings' %}">My bookings</a>
+                <a href="{% url 'password_change' %}">Change password</a>
                 <a href="{% url 'logout' %}">Log out</a>
             {% else %}
                 <a href="{% url 'login' %}">Log in</a>

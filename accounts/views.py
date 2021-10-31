@@ -215,3 +215,27 @@ def password_reset_complete(request):
             return redirect('password_reset_complete')
 
     return render(request, 'account/password_reset_complete.html')
+
+
+
+def password_change(request):
+    if request.method == 'POST':
+        user = Account.objects.get(id=request.user.id)
+        current_password = request.POST.get('current_password')
+        new_password = request.POST.get('new_password')
+        new_password2 = request.POST.get('new_password2')
+
+        # check if the current password entered is correct
+        if user.check_password(current_password):
+            if new_password == new_password2:
+                user.set_password(new_password)
+                user.save()
+                messages.success(request, 'Your password was changed successfully!')
+                logout(request)
+                return redirect('login')
+            else:
+                messages.error(request, 'The two new password did not match!')
+        else:
+            messages.error(request, 'The current password is incorrect!')
+
+    return render(request, 'account/password_change.html')
