@@ -1,35 +1,64 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Rico Palace Hotel{% endblock title %}</title>
-    <style>
-        label, input{
-            display: block
-        }
-        input{
-            margin-bottom: 10px
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.15.4-web/css/all.css' %}">
 </head>
 <body>
     <header>
-        {% block header %}
-            {% if user.is_authenticated %}
-                <span> Welcome, {{ user.customer.first_name}}!</span>
-                <a href="{% url 'my_bookings' %}">My bookings</a>
-                <a href="{% url 'password_change' %}">Change password</a>
-                <a href="{% url 'logout' %}">Log out</a>
-            {% else %}
-                <a href="{% url 'login' %}">Log in</a>
-            {% endif %}
-        {% endblock header %}
-    </header>
-    {% block content %}
+        <div class="navbar">
+            <div class="navbar__logo">
+                <h1>RPH</h1>
+            </div>
+            <div class="navbar__navigation">
+                <div class="toggle__btn" id="toggle__btn">
+                    <span class="toggle__icon"></span>
+                </div>
+                <div class="nav__link_wrapper" id="nav__link_wrapper">
+                    <div class="nav__links">
+                        <a class="nav__link" href={% url 'home' %}>Go Home</a>
+                        <a class="nav__link" href={% url 'room_list' %}>Our rooms</a>
+                    </div>
+                    {% block header %}
+                        {% if user.is_authenticated %}
+                            <div class="user__info">
+                                <div class="user__greeting">
+                                    <span > Welcome, {{ user.customer.first_name}}!</span>
+                                    <i class="fas fa-angle-double-down down"></i>
+                                    <i class="fas fa-angle-double-up up"></i>
+                                </div>
+                                <div class="user__links">
+                                    <a class="nav__link" href="{% url 'my_bookings' %}">My bookings</a>
+                                    <a class="nav__link" href="{% url 'password_change' %}">Change password</a>
+                                    <a class="nav__link" href="{% url 'logout' %}">Log out</a>
+                                </div>
+                            </div>
+                        {% else %}
+                             <div class="user__info">
+                                <a class="nav__link" href="{% url 'login' %}">Log in</a>
+                                <a class="nav__link" href="{% url 'register' %}">Register</a>
+                            </div> 
+                                
+                        {% endif %}
+                    {% endblock header %}
+                    
+                </div>
+            </div>
+        </div>
         
-    {% endblock content %}
+    </header>
+    <div id="content">
+        {% block content %}
+            
+        {% endblock content %}
+    </div>
     {% block script %}{% endblock script %}
+    <script src={% static 'js/jquery-3.6.0.min.js' %}></script>
+    <script src={% static 'js/script.js' %}></script>
 </body>
 </html>

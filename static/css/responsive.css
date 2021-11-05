@@ -1,0 +1,84 @@
+/* navbar */
+@media screen and (min-width: 600px) {
+  .navbar .toggle__btn {
+    display: none;
+  }
+
+  .nav__link_wrapper {
+    position: static;
+    background-color: transparent;
+    display: flex;
+  }
+
+  .nav__link {
+    display: inline-block;
+    color: var(--color-blue);
+    font-size: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .user__info{
+      width: 150px;
+      margin-left: 1rem;
+      position: relative;
+  }
+
+  .user__links{
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: var(--color-white);
+      width: 100%;
+      box-shadow: var(--light-shadow);
+      display: none;
+      transition: all 2s;
+  }
+
+  .show__user_links{
+      display: block;
+      top: 4rem;
+  }
+
+  .user__links .nav__link{
+      display: block;
+      padding: .5rem;
+      color: var(--color-blue);
+  }
+  .user__links .nav__link:hover{
+      color: var(--color-white);
+      background-color: var(--color-blue);
+  }
+
+  .user__greeting{
+     display: inline-block;
+     margin-bottom: 1rem;
+     position: relative;
+  }
+
+  .user__greeting.link__down .down{
+      display: none;
+  }
+  .user__greeting.link__down .up{
+      display: inline-block;
+  }
+  .user__greeting:not(.link__down) .up{
+      display: none;
+  }
+
+
+  .user__greeting > i{
+      display: inline-block;
+      position: absolute;
+      bottom: -1.5rem;
+      left: 50%;
+      color: var(--color-red);
+      cursor: pointer;
+      transition: all .5s;
+  }
+
+  .user__greeting > i:hover{
+    transform: scale(1.5);
+  }
+  
+}
+/* end of navbar */
