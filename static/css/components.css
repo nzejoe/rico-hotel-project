@@ -1,0 +1,86 @@
+.navbar__logo {
+  text-align: center;
+}
+
+.navbar__logo h1 {
+  text-transform: uppercase;
+}
+
+/* section */
+.section {
+  width: 100%;
+  padding: 5rem 2rem;
+}
+
+/* section wrapper */
+.section__wrapper {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  max-width: 111rem;
+}
+
+.primary__link_btn {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+}
+
+.secondary__link_btn {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: 0.5rem 2.5rem;
+  text-transform: uppercase;
+}
+
+.primary__title {
+  margin: 2rem 0;
+}
+
+.primary__title .title {
+  text-transform: capitalize;
+  font-size: 3rem;
+}
+
+.primary__title .underline {
+  padding: 0.1rem;
+  width: 8rem;
+  background-color: var(--color-red);
+  margin-top: 1.5rem;
+}
+
+/************* 3rd party  ****************/
+/* lightSlider */
+.lSSlideOuter .lSPager.lSpg > li:hover a,
+.lSSlideOuter .lSPager.lSpg > li.active a {
+  background-color: var(--color-red);
+}
+
+.lSAction > a {
+  background-color: var(--color-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-image: none;
+  transition: all .2s;
+}
+
+.lSAction > a:hover{
+  transform: scale(1.3);
+}
+
+.lSAction > a > i{
+    color: var(--color-red);
+} 
+
+/************* end of 3rd party  ****************/

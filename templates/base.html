@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Rico Palace Hotel{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.15.4-web/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lightslider.css' %}">
+    <script src={% static 'js/jquery-3.6.0.min.js' %}></script>
+    <script src={% static 'js/lightslider.js' %}></script>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="navbar">
             <div class="navbar__logo">
-                <h1>RPH</h1>
+                <h1 class="logo__initials">RPH</h1>
+                {% comment %} <small class="logo__letters">rico palace hotel</small> {% endcomment %}
             </div>
             <div class="navbar__navigation">
                 <div class="toggle__btn" id="toggle__btn">
@@ -45,20 +49,19 @@
                             </div> 
                                 
                         {% endif %}
-                    {% endblock header %}
-                    
+                    {% endblock header %} 
                 </div>
             </div>
-        </div>
-        
+        </div>    
     </header>
+    {% block hero %}{% endblock hero %}
     <div id="content">
         {% block content %}
             
         {% endblock content %}
     </div>
     {% block script %}{% endblock script %}
-    <script src={% static 'js/jquery-3.6.0.min.js' %}></script>
+    
     <script src={% static 'js/script.js' %}></script>
 </body>
 </html>

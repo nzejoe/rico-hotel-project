@@ -1,5 +1,14 @@
 /* navbar */
+
+@media screen and (max-width: 600px) {
+  .hero .photo__title {
+    font-size: 6rem;
+  }
+}
+
+/* min width */
 @media screen and (min-width: 600px) {
+  /* navbar */
   .navbar .toggle__btn {
     display: none;
   }
@@ -17,68 +26,158 @@
     transition: all 0.2s;
   }
 
-  .user__info{
-      width: 150px;
-      margin-left: 1rem;
-      position: relative;
+  .user__info {
+    width: 150px;
+    margin-left: 1rem;
+    position: relative;
   }
 
-  .user__links{
-      position: absolute;
-      top: -100%;
-      left: 0;
-      background: var(--color-white);
-      width: 100%;
-      box-shadow: var(--light-shadow);
-      display: none;
-      transition: all 2s;
+  .user__links {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background: var(--color-white);
+    width: 100%;
+    box-shadow: var(--light-shadow);
+    display: none;
+    transition: all 2s;
   }
 
-  .show__user_links{
-      display: block;
-      top: 4rem;
+  .show__user_links {
+    display: block;
+    top: 4rem;
   }
 
-  .user__links .nav__link{
-      display: block;
-      padding: .5rem;
-      color: var(--color-blue);
+  .user__links .nav__link {
+    display: block;
+    padding: 0.5rem;
+    color: var(--color-blue);
   }
-  .user__links .nav__link:hover{
-      color: var(--color-white);
-      background-color: var(--color-blue);
-  }
-
-  .user__greeting{
-     display: inline-block;
-     margin-bottom: 1rem;
-     position: relative;
+  .user__links .nav__link:hover {
+    color: var(--color-white);
+    background-color: var(--color-blue);
   }
 
-  .user__greeting.link__down .down{
-      display: none;
-  }
-  .user__greeting.link__down .up{
-      display: inline-block;
-  }
-  .user__greeting:not(.link__down) .up{
-      display: none;
+  .user__greeting {
+    display: inline-block;
+    margin-bottom: 1rem;
+    position: relative;
   }
 
-
-  .user__greeting > i{
-      display: inline-block;
-      position: absolute;
-      bottom: -1.5rem;
-      left: 50%;
-      color: var(--color-red);
-      cursor: pointer;
-      transition: all .5s;
+  .user__greeting.link__down .down {
+    display: none;
+  }
+  .user__greeting.link__down .up {
+    display: inline-block;
+  }
+  .user__greeting:not(.link__down) .up {
+    display: none;
   }
 
-  .user__greeting > i:hover{
+  .user__greeting > i {
+    display: inline-block;
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    color: var(--color-red);
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+
+  .user__greeting > i:hover {
     transform: scale(1.5);
+  } /* end of navbar */
+
+  /* about */
+  .section__about .section__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  
+
+  .section__about .about__info {
+    flex: 0 0 calc(50% - 2rem);
+    margin-right: 5rem;
+  }
+
+  .about__photo {
+    flex: 0 0 calc(50% - 2rem);
+    margin-top: 6rem;
+    width: 100%;
+    height: 50rem;
+  }
+
+  .about__photo img {
+    object-fit: cover;
+  }
+  /* end of about */
+
+  /* services */
+  .section__services .service {
+    display: flex;
+    height: 20rem;
+  }
+
+  .section__services .services__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section__services .services__header .services__detail_link,
+  .services__text {
+    flex: 0 0 calc((100% / 2) - 5rem);
+  }
+
+  .primary__link_btn {
+    float: right;
+  }
+  .section__services .service__desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .section__services .secondary__link_btn {
+    align-self: flex-start;
+  }
+  .section__services .service__img_container {
+    height: 100%;
+    width: 40%;
+  }
+
+  .section__services .service__img_container img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* end of services */
 }
-/* end of navbar */
+
+@media screen and (min-width: 800px) {
+  /* services */
+  .section__services .services {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .section__services .service {
+    flex: 0 0 calc((100% / 2) - 2rem);
+  }
+
+  .section__services .service__img_container {
+    width: 100%;
+  }
+  /* end of services */
+
+}
+
+@media screen and (min-width: 1024px) {
+  /* our team */
+  .section__our_team .member {
+    margin: auto;
+    margin-bottom: 2rem;
+    height: 35.1rem;
+  }
+  /* end of our team */
+}

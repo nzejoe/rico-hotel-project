@@ -4,7 +4,6 @@
   right: 0;
   top: 0%;
   width: 100%;
-  height: 10rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,11 +11,6 @@
   background: var(--color-white);
   box-shadow: var(--light-shadow);
   z-index: 100;
-}
-
-.navbar__logo h1 {
-  font-size: 2rem;
-  text-transform: uppercase;
 }
 
 .navbar .toggle__btn {
@@ -85,14 +79,18 @@
   width: 100%;
   height: 100%;
   background-color: var(--color-blue);
-  transition: left .2s;
+  transition: left 0.2s;
 }
 
 .show__links {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(to bottom, var(--color-blue), var(--color-dark));
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-blue),
+    var(--color-dark)
+  );
   text-align: center;
 }
 
@@ -100,11 +98,11 @@
   display: inline-block;
   color: var(--color-white);
   font-size: 2rem;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-.show__links .nav__links{
-    margin-top: 10rem;
+.show__links .nav__links {
+  margin-top: 10rem;
 }
 
 .nav__link:link,
@@ -119,23 +117,290 @@
   margin-bottom: 3rem;
 }
 
-.user__greeting i{
-      display: none;
-  }
+.user__greeting i {
+  display: none;
+}
 
 span.nav__link {
   color: var(--color-dark);
 }
 
-.show__links .nav__link:hover{
-    margin-left: 1rem;
-    color: var(--color-red);
-}/************* end of navbar ***********/
+.show__links .nav__link:hover {
+  margin-left: 1rem;
+  color: var(--color-red);
+} /************* end of navbar ***********/
 
 /* content */
 
 /* home */
 /************* hero banner ***********/
+.hero {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  top: 5rem;
+}
 
+.hero__photo_viewer {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero__photo_slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.hero__photo_slide {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+
+.hero__photo_slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.hero__photo_header {
+  position: absolute;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  z-index: 10;
+  text-align: center;
+}
+
+.hero .photo__title {
+  margin: auto;
+  font-size: 8rem;
+  background: transparent;
+  line-height: 1;
+  color: var(--color-white);
+}
+.hero .photo__title_strong {
+  color: var(--color-blue);
+}
+
+.hero__link_btn {
+  background: black;
+  color: var(--color-white);
+}
+
+.hero__photo_btns {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  padding: 1rem;
+}
+
+.hero__btn {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  color: var(--color-red);
+  font-size: 2.5rem;
+  cursor: pointer;
+  background: var(--color-blue-trans);
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.hero__btn i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero__btn:hover {
+  transform: scale(1.3);
+}
+.hero__link {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
 /************* end of hero banner ***********/
- 
+
+/*************  section about ***********/
+.about__text {
+  font-size: 1.6rem;
+}
+
+.about__text p:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.about__services {
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+.about__services p:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.about__services p i {
+  margin-right: 1rem;
+  color: var(--color-red);
+}
+
+.about__link_btn {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+.about__photo {
+  margin-top: 6rem;
+  width: 100%;
+  max-width: 50rem;
+}
+
+.about__photo img {
+  height: 100%;
+  width: 100%;
+} /*************  end of section about ***********/
+
+/*************  services ***********/
+.section__services {
+  color: var(--color-dark);
+  background: var(--background-blue);
+}
+
+.section__services .services {
+  margin-top: 4rem;
+}
+.section__services .service {
+  margin: 2rem 0;
+}
+
+.section__services .service__desc {
+  padding: 1rem;
+  background: var(--color-white);
+}
+
+.section__services .service__img_container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.section__services .service__img_container img {
+  display: block;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.section__services .service .service__img_container:hover img {
+  transform: scale(1.2);
+}
+
+.section__services .service__desc .service__title,
+.service__body {
+  margin-top: 1rem;
+}
+
+.section__services .services__link_btn {
+  background: black;
+  color: var(--color-white);
+  font-size: 2rem;
+}
+.section__services .service__link_btn {
+  background: black;
+  color: var(--color-white);
+  font-size: 1.2rem;
+}
+
+/*************  end of services ***********/
+
+/*************  section our team ***********/
+.section__our_team {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: rgba(0, 0, 0, 0.493);
+  color: var(--color-white);
+}
+
+.section__our_team::after {
+  content: "";
+  position: absolute;
+  background: fixed no-repeat center/cover url("./team__background.jpg");
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.team__wrapper{
+  height: 100%;
+}
+
+.section__our_team .our__team_viewer {
+  margin-top: 2rem;
+  height: 55rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section__our_team .our__team_members {
+  height: 100%;
+  width: 100%;
+}
+
+.section__our_team .member {
+  height: 50rem;
+}
+
+.section__our_team .member__img_container {
+  width: 100%;
+  height: 80%;
+  overflow: hidden;
+}
+
+.section__our_team .member__img_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: all .5s;
+}
+
+.member__img_container:hover img{
+    transform: scale(1.2);
+}
+.section__our_team .member__desc {
+  color: var(--color-dark);
+  height: 20%;
+  background: var(--background-blue);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section__our_team .our__team_members {
+}
+
+/************* end of section our team ***********/

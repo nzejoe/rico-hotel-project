@@ -1,6 +1,226 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block hero %}
+    <section class="hero">
+        <div class="hero__photo_viewer">
+            <div class="hero__photo_slider">
+                <div class="hero__photo_slide">
+                    <div class="hero__photo_header">
+                        <h1 class="photo__title">
+                            A clean bed for a 
+                            <span class="photo__title_strong">tired</span>
+                            soul.
+                        </h1>
+                        <div class="hero__link">
+                            <a href="{% url 'room_list' %}" class="primary__link_btn hero__link_btn">Find out more</a>
+                        </div>
+                    </div>
+                    <img src="{% static 'images/hero/cozy_in_bed.jpg' %}" alt="Woman lying on the bed.">
+                </div>
+                <div class="hero__photo_slide">
+                    <div class="hero__photo_header">
+                        <h1 class="photo__title">
+                            Great rooms make
+                            <span class="photo__title_strong">great</span>
+                            mornings.
+                        </h1>
+                        <div class="hero__link">
+                            <a href="{% url 'room_list' %}" class="primary__link_btn hero__link_btn">Find out more</a>
+                        </div>
+                    </div>
+                    <img src="{% static 'images/hero/standing_view.jpg' %}" alt="Woman viewing outside.">
+                </div>
+            </div>
+            <div class="hero__photo_btns">
+                <span class="hero__photo_btn hero__btn btn__left" >
+                    <i class="fas fa-angle-double-left"></i>
+                </span>
+                <span class="hero__photo_btn hero__btn btn__right">
+                    <i class="fas fa-angle-double-right"></i
+                ></span>
+            </div>
+        </div>
+    </section>
+{% endblock hero %}
 
 {% block content %}
     {% include 'include/messages.html' %}
-    <h4>Welcome</h4>
+
+    <!-- section hero -->
+    <section class="section section__about" id="about">
+        <div class="section__wrapper">
+            <div class="about__info">
+                <div class="primary__title">
+                    <h1 class="title">about us</h1>
+                    <div class="underline"></div>
+                </div>
+                <div class="about__text">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, ullam ex? Omnis ipsum iure doloremque autem ea voluptas nostrum maiores.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores adipisci, exercitationem molestiae unde minus minima omnis libero tenetur sint suscipit animi aliquid. Quidem at asperiores error animi ex maiores consequuntur delectus minus corrupti ducimus et amet tempora laboriosam earum libero nisi laudantium provident, cumque repudiandae rem nemo, quos quo! Ipsa quisquam quae, laudantium dolor totam laborum eaque nam, quis earum, nostrum soluta? A fugiat nemo doloribus autem ipsa debitis recusandae nesciunt veritatis. Obcaecati beatae rerum, a magnam soluta provident cupiditate?</p>
+                </div>
+                <div class="about__services">
+                    <p><i class="fas fa-hand-point-right"></i>Personalize Service</p>
+                    <p><i class="fas fa-hand-point-right"></i>24x7 Support</p>
+                    <p><i class="fas fa-hand-point-right"></i> Best Price</p>
+                    <p><i class="fas fa-hand-point-right"></i> Trusted Company</p>
+                    <a href="{% url 'room_list' %}" class="primary__link_btn about__link_btn ">read more</a>
+                </div>
+            </div>
+            <div class="about__photo">
+                <img src="{% static 'images/about/about__img.jpg' %}" alt="Woman lying on the bed after yoga">
+            </div>
+        </div>
+    </section><!-- // end of section about -->
+
+    <!-- section services -->
+    <section class="section section__services">
+        <div class="section__wrapper">
+            <div class="service__info">
+                <div class="primary__title">
+                    <h1 class="title">our services</h1>
+                    <div class="underline"></div>
+                </div>
+                <div class="services__header">
+                    <p class="services__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum porro, ducimus aperiam, dolorum quas autem totam accusantium et dolor est similique iste sapiente repellat! Pariatur, facere nulla. Sunt, est excepturi.</p>
+                    <div class="services__detail_link">
+                        <a href="{% url 'room_list' %}" class="primary__link_btn services__link_btn">view all</a>
+                    </div>
+                </div>
+            </div>
+            <div class="services">
+                <div class="service">
+                    <div class="service__desc">
+                        <h4 class="service__title">Restaurant</h4>
+                        <p class="service__body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora molestias ullam optio debitis fugiat.
+                        </p>
+                        <a href="{% url 'room_list' %}" class="secondary__link_btn service__link_btn">see all</a>
+                    </div>
+                    <div class="service__img_container">
+                        <a href="{% url 'room_list' %}">
+                            <img src="{% static 'images/services/restaurant.jpg' %}" alt="Restaurant">
+                        </a>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service__desc">
+                        <h4 class="service__title">Spa - Beauty &amp; Health</h4>
+                        <p class="service__body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora molestias ullam optio debitis fugiat.
+                        </p>
+                        <a href="{% url 'room_list' %}" class="secondary__link_btn service__link_btn">see all</a>
+                    </div>
+                    <div class="service__img_container">
+                        <a href="{% url 'room_list' %}">
+                            <img src="{% static 'images/services/spa.jpg' %}" alt="Spa beds">
+                        </a>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service__desc">
+                        <h4 class="service__title">Conference Room</h4>
+                        <p class="service__body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora molestias ullam optio debitis fugiat.
+                        </p>
+                        <a href="{% url 'room_list' %}" class="secondary__link_btn service__link_btn">see all</a>
+                    </div>
+                    <div class="service__img_container">
+                        <a href="{% url 'room_list' %}">
+                            <img src="{% static 'images/services/conference.jpg' %}" alt="Happy custumers at conference">
+                        </a>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service__desc">
+                        <h4 class="service__title">Swimming Pool</h4>
+                        <p class="service__body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora molestias ullam optio debitis fugiat.
+                        </p>
+                        <a href="{% url 'room_list' %}" class="secondary__link_btn service__link_btn">see all</a>
+                    </div>
+                    <div class="service__img_container">
+                        <a href="{% url 'room_list' %}">
+                            <img src="{% static 'images/services/swimming_pool.jpg' %}" alt="Swimming pool">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- // end of section services -->
+
+    <!-- section our team -->
+    <section class="section section__our_team">
+        <div class="section__wrapper team__wrapper">
+            <div class="our__team_info">
+                <div class="primary__title">
+                    <h1 class="title">our team</h1>
+                    <div class="underline"></div>
+                </div>
+                <p class="our__team_text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio nobis fuga aut blanditiis at magni dolore vel aperiam quo, exercitationem minus mollitia perspiciatis perferendis, nesciunt autem necessitatibus quis odit. Corrupti!
+                </p>
+            </div>
+            <div class="our__team_viewer">
+                <ul id="lightSlider" class="our__team_members">
+                    <li class="member">
+                        <div class="member__img_container">
+                            <img src="{% static 'images/team/staff_1.jpg' %}" alt="Staff">
+                        </div>
+                        <div class="member__desc">
+                            <h3 class="member__name">James Smith</h3>
+                            <p class="member__title">CEO</p>
+                        </div>
+                    </li>
+                    <li class="member">
+                        <div class="member__img_container">
+                            <img src="{% static 'images/team/staff_2.jpg' %}" alt="Staff">
+                        </div>
+                        <div class="member__desc">
+                            <h3 class="member__name">Clark Kent</h3>
+                            <p class="member__title">HR Manager</p>
+                        </div>
+                    </li>
+                    <li class="member">
+                        <div class="member__img_container">
+                            <img src="{% static 'images/team/staff_3.jpg' %}" alt="Staff">
+                        </div>
+                        <div class="member__desc">
+                            <h3 class="member__name">Maria Garcia</h3>
+                            <p class="member__title">Front Office Manager</p>
+                        </div>
+                    </li>
+                    <li class="member">
+                        <div class="member__img_container">
+                            <img src="{% static 'images/team/staff_4.jpg' %}" alt="Staff">
+                        </div>
+                        <div class="member__desc">
+                            <h3 class="member__name">David Martins</h3>
+                            <p class="member__title">Travel Agent</p>
+                        </div>
+                    </li>
+                    <li class="member">
+                        <div class="member__img_container">
+                            <img src="{% static 'images/team/staff_5.jpg' %}" alt="Staff">
+                        </div>
+                        <div class="member__desc">
+                            <h3 class="member__name">Sarah Rodriguez</h3>
+                            <p class="member__title">Event Planner</p>
+                        </div>
+                    </li>
+                    <li class="member">
+                        <div class="member__img_container">
+                            <img src="{% static 'images/team/staff_6.jpg' %}" alt="Staff">
+                        </div>
+                        <div class="member__desc">
+                            <h3 class="member__name">Jackson Samuel</h3>
+                            <p class="member__title">Head Chef</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section><!-- // end of section our team -->
+
 {% endblock content %}
