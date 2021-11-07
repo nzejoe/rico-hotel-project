@@ -98,6 +98,7 @@
   display: inline-block;
   color: var(--color-white);
   font-size: 2rem;
+  text-transform: uppercase;
   transition: all 0.2s;
 }
 
@@ -467,3 +468,101 @@ span.nav__link {
   color: var(--color-white);
 }
 /************* end of why choose us ***********/
+
+/************* our blog ***********/
+.section__blog{
+  width: 100%;
+  background: var(--background-blue);
+}
+
+.blog__post_viewer{
+  margin-top: 4rem;
+}
+
+.blog__post{
+  height: 50rem;
+}
+.blog__img_container{
+  width: 100%;
+  height: 50%;
+  position: relative;
+}
+.blog__post img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog__date{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 7rem;
+  /* height: 6rem; */
+  background: var(--color-red);
+  text-align: center;
+}
+
+.post__date_day{
+  font-size: 2.5rem;
+  margin-top: .1rem;
+  padding: 1rem;
+  color: var(--color-white);
+}
+.post__month_year{
+  background-color: #000;
+  color: var(--color-white);
+  padding: 1px;
+}
+
+.post__info_wrapper{
+  background-color: var(--color-white);
+  padding: 1rem;
+}
+
+.blog__actions{
+  margin: 1rem 0;
+  color: var(--color-dark);
+}
+
+.blog__actions > span{
+  margin-right: .5rem;
+  text-transform: capitalize;
+}
+
+.blog__actions > span > i{
+  color: var(--color-red);
+}
+
+
+.blog__post_info{
+  margin-top: 2rem;
+}
+
+.post__title{
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+.post__body{
+  margin-bottom: 2rem;
+}
+
+.blog__post_link{
+  padding: 1rem;
+  background-color: var(--color-red);
+  text-align: center;
+  transition: all .3s;
+}
+
+.blog__post_link:hover{
+  background-color: #000;
+}
+
+.blog__post_link a:link, .blog__post_link a:visited{
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+/************* end of our blog ***********/

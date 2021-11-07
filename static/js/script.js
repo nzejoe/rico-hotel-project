@@ -132,4 +132,41 @@ $(document).ready(function () {
     ],
   });  
   //******************** end of our team  *************************/
+
+  //******************** our blog  *************************/
+  $("#blogPost").lightSlider({
+    item: 3,
+    loop: true,
+    slideMargin: 30,
+    auto: true,
+    slideMove: 2,
+    easing: "cubic-bezier(0.25, 0, 0.25, 1)",
+    speed: 1000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          item: 4,
+          slideMove: 1,
+          slideMargin: 20,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          item: 2,
+          slideMove: 1,
+          slideMargin: 20,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          item: 1,
+          slideMove: 1,
+        },
+      },
+    ],
+  }); 
+  //******************** end of our blog  *************************/
 });

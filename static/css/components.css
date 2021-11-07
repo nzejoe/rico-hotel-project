@@ -9,7 +9,7 @@
 /* section */
 .section {
   width: 100%;
-  padding: 5rem 2rem;
+  padding: 5rem 1.5rem;
 }
 
 /* section wrapper */
@@ -81,6 +81,11 @@
 
 .lSAction > a > i{
     color: var(--color-red);
-} 
+}
+
+/* our blog */
+section.section__blog .lSAction > a{
+  top: 2rem;
+}
 
 /************* end of 3rd party  ****************/

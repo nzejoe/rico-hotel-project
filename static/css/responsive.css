@@ -23,7 +23,13 @@
     display: inline-block;
     color: var(--color-blue);
     font-size: 1.5rem;
+    font-weight: bold;
     transition: all 0.2s;
+    margin-right: .5rem;
+  }
+
+  .nav__link:hover{
+    color: var(--color-red);
   }
 
   .user__info {
@@ -155,7 +161,7 @@
 
 @media screen and (min-width: 760px) {
   /* our team */
-  .our__team_info {
+  .our__team_info, .our__blog_text, .why__us_text {
     width: 70%;
   }
   /* end of our team */
@@ -182,7 +188,7 @@
   .section__our_team {
     height: calc(100vh - 5rem);
   }
-  .our__team_info {
+  .our__team_info, .our__blog_text, .why__us_text {
     width: 70%;
   }
   /* end of our team */
@@ -191,7 +197,7 @@
 @media screen and (min-width: 1024px) {
   /* our team */
 
-  .our__team_info {
+  .our__team_info, .our__blog_text, .why__us_text {
     width: 50%;
   }
 
