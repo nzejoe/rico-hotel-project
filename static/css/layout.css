@@ -352,7 +352,7 @@ span.nav__link {
   height: 100%;
 }
 
-.team__wrapper{
+.team__wrapper {
   height: 100%;
 }
 
@@ -385,11 +385,11 @@ span.nav__link {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
-.member__img_container:hover img{
-    transform: scale(1.2);
+.member__img_container:hover img {
+  transform: scale(1.2);
 }
 .section__our_team .member__desc {
   color: var(--color-dark);
@@ -404,3 +404,66 @@ span.nav__link {
 }
 
 /************* end of section our team ***********/
+
+/************* why choose us ***********/
+
+.why__us_grids {
+  display: grid;
+  width: 100%;
+  /* height: 30rem; */
+  position: relative;
+  margin: auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 2rem;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.why__us_grids::before{
+  content: "";
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-white);
+  z-index: 2;
+}
+
+.why__us_grid {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.why__us_grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all .3s;
+}
+
+.why__us_grid:hover img{
+  transform: scale(1.2);
+}
+
+.why__us_grid .grid__header {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: .5rem .5rem 1.5rem .5rem;
+  background: linear-gradient(transparent, black);
+}
+
+.why__us_grid h2 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+/************* end of why choose us ***********/
