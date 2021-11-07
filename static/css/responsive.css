@@ -153,6 +153,14 @@
   /* end of services */
 }
 
+@media screen and (min-width: 760px) {
+  /* our team */
+  .our__team_info {
+    width: 70%;
+  }
+  /* end of our team */
+}
+
 @media screen and (min-width: 800px) {
   /* services */
   .section__services .services {
@@ -170,10 +178,28 @@
   }
   /* end of services */
 
+  /* our team */
+  .section__our_team {
+    height: calc(100vh - 5rem);
+  }
+  .our__team_info {
+    width: 70%;
+  }
+  /* end of our team */
 }
 
 @media screen and (min-width: 1024px) {
   /* our team */
+
+  .our__team_info {
+    width: 50%;
+  }
+
+  .section__our_team .our__team_viewer {
+    height: 45rem;
+    width: 100%;
+  }
+
   .section__our_team .member {
     margin: auto;
     margin-bottom: 2rem;
