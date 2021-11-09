@@ -1,0 +1,175 @@
+/********************** room list  ************************/
+.section__our_rooms {
+  background-color: var(--background-red-trans);
+  margin-top: -5rem;
+}
+.room__list {
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.room {
+  width: 100%;
+  margin-bottom: 2rem;
+  box-shadow: var(--light-shadow-2);
+  overflow: hidden;
+}
+
+.room .room__img_container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.room .room__img_container img {
+  width: 100%;
+  transition: all 0.5s;
+}
+
+.room .room__img_container:hover img {
+  transform: scale(1.2);
+}
+
+.room .room__detail {
+  height: 42%;
+  padding: 2rem;
+  background: #fff;
+}
+
+.room .room__desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room .room__desc h4 {
+  color: var(--color-dark);
+}
+
+.room .room__type,
+.room .price__desc {
+  color: var(--color-dark-trans);
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.room .price__desc {
+  float: right;
+}
+
+.room .room__price {
+  color: rgb(60, 233, 60);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.room .room__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.room__actions a,
+.room__actions a:link,
+.room__actions a:visited {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.room__actions .room__detail_link {
+  background-color: #000;
+  color: #fff;
+}
+
+.room__actions .room__book_link {
+  background-color: var(--color-red);
+  color: #fff;
+  transition: all .5s;
+}
+
+.room__actions .room__book_link:hover{
+  background-color: #000;
+}
+
+.room__page_actions {
+  width: 100%;
+  text-align: center;
+  padding: 5rem 0 2rem 0;
+}
+
+.room__page_actions .page__links {
+  display: inline-block;
+  list-style: none;
+  border-radius: 10rem;
+  box-shadow: var(--light-shadow-2);
+}
+
+.room__page_actions .page__links li {
+  display: inline-block;
+  background-color: #fff;
+  box-shadow: var(--light-shadow-2);
+}
+
+.room__page_actions .page__links li:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.room__page_actions .page__links li.disabled {
+  background-color: rgba(255, 255, 255, 0);
+}
+.room__page_actions .page__links li.disabled:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.room__page_actions .page__links li a,
+.room__page_actions .page__links li a:link,
+.room__page_actions .page__links li a:visited {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: var(--color-dark);
+}
+
+.room__page_actions .page__links li:not(:last-child) {
+  margin-right: 0.1rem;
+}
+
+.room__page_actions .page__links .previous__link {
+  border-top-left-radius: 10rem;
+  border-bottom-left-radius: 10rem;
+}
+
+.room__page_actions .page__links .previous__link a,
+.previous__link.disabled {
+  padding: 1rem 1rem 1.3rem 2rem;
+}
+
+.room__page_actions .page__links .next__link {
+  border-top-right-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+}
+
+.room__page_actions .page__links .next__link a,
+.next__link.disabled {
+  padding: 1rem 2rem 1.3rem 1rem;
+}
+
+.room__page_actions .page__links .page__number a {
+  padding: 1rem 2rem 1.3rem 2rem;
+}
+
+.room__page_actions .page__links li.active__page {
+  background-color: var(--color-red);
+  color: #fff;
+}
+.room__page_actions .page__links li.active__page a {
+  color: #fff;
+}
+
+/********************** end of room list  ************************/

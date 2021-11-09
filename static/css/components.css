@@ -105,3 +105,42 @@ section.section__blog .lSAction > a{
 }
 
 /************* end of 3rd party  ****************/
+
+
+/************* page header  ****************/
+.page__header{
+  background: rgba(0, 0, 0, 0.541);
+  width: 100%;
+  height: 25rem;
+  overflow: hidden;
+  position: relative;
+  top: 5rem;
+}
+
+.page__header::after{
+  content: "";
+  display: block;
+  position: absolute;
+  background: url('../images/pages/page_header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.page__header h1{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 5rem;
+  text-transform: capitalize;
+}
+/************* end of page header  ****************/

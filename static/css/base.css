@@ -2,19 +2,22 @@
 
 @import url("./components.css");
 @import url("./layout.css");
+@import url("./pages.css");
 @import url("./responsive.css");
 
 :root {
   font-size: 62.5%;
   --color-primary: #6c91c2;
   --color-dark: #373f47;
+  --color-dark-trans: #373f47ab;
   --color-gray: #8b8982;
   --color-white: #fff;
   --color-blue: #2f3c7e;
-  --background-blue: #c5c9e0;
+  --background-red-trans: #ff44000c;
   --color-blue-trans: #2f3c7e8f;
   --color-red: #ff4400;
   --light-shadow: 0 0 2px var(--color-dark);
+  --light-shadow-2: 0 0 5px rgba(0, 0, 0, 0.096);
 }
 
 *,

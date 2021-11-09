@@ -220,17 +220,18 @@ $(document).ready(function () {
   const footerSlideBtn = $(
     '<div class="slidBtn"><div class="prevBtn btn"><i class="fas fa-angle-double-left"></i></div><div class="nextBtn btn"><i class="fas fa-angle-double-right"></i></div></div>'
   );
+  const counter = $('<span class="postCounter"></span>')
   const IGSlides = $('.instagram__post') // instagram images
   let clonedSlides = null;
   let footerSlider = null;
-  let footerIndex = 0
+  let footerIndex = 0;
 
 
   const footerMove = (newIndex, position) => {
     if (footerIndex > newIndex) {
-      animate = "-100%";
-    } else {
       animate = "100%";
+    } else {
+      animate = "-100%";
     }
 
     if (newIndex < 0) {
@@ -239,16 +240,23 @@ $(document).ready(function () {
       newIndex = 0;
     }
 
+
     clonedSlides.eq(newIndex).css({ display: "block", left: position });
 
-    footerSlider.not(':animated').animate({ left: animate }, () => {
+    footerSlider.not(':animated').animate({ left: animate },  800, () => {
       clonedSlides.eq(footerIndex).css({ display: "none" });
       clonedSlides.eq(newIndex).css({ left: "0" });
       footerSlider.css({ left: "0" });
       footerIndex = newIndex;
+      postCounter(footerIndex);
     });
   };
 
+  // post counter
+  const postCounter = (index)=>{ // this render the number of post/posts length
+    counter.text(`${index + 1}/${clonedSlides.length}`);
+    footerIMGViewer.append(counter);
+  }
 
   IGSlides.on('click', function(){
     modal.empty(); // first empty
@@ -259,7 +267,7 @@ $(document).ready(function () {
     // join the div
     footerIMGSlider.append(clonedSlides);
     footerIMGViewer.append(footerIMGSlider);
-    footerIMGViewer.prepend(footerSlideBtn);
+    modal.prepend(footerSlideBtn);
     modal.append(footerIMGViewer);
     modal.prepend(footerOverlay);
     body.prepend(modal);
@@ -267,6 +275,9 @@ $(document).ready(function () {
 
     body.addClass("modal__open");
     clonedSlides.eq(footerIndex).css({ display: "block" });
+
+    // call post counter
+    postCounter(footerIndex) // from index for the first render to get accurate index
   })
 
   $(document).on("click", ".footer__overlay", function () {
@@ -276,13 +287,11 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#modal .prevBtn", function () {
-    footerMove(footerIndex - 1, "100%");
-    console.log(footerIndex)
+    footerMove(footerIndex - 1, "-100%");
   });
   
   $(document).on("click", "#modal .nextBtn", function () {
-    footerMove(footerIndex + 1, "-100%");
-    console.log(footerIndex)
+    footerMove(footerIndex + 1, "100%");
   });
   //******************** end of our footer section  *************************/
 

@@ -173,7 +173,34 @@
     width: 64rem;
     height: 45rem;
   }
+
+  #modal .slidBtn {
+    top: 10%;
+  }
   /* end of footer */
+
+  /* our room list */
+  .room {
+    height: 32.8rem;
+  }
+
+  .room .room__img_container {
+    height: 58%;
+  }
+
+  .room .room__detail {
+    height: 42%;
+  }
+  .room__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .room__list .room {
+    flex: 0 0 calc((100% / 2) - 1rem);
+  }
+  /* end of our room list */
 }
 
 @media screen and (min-width: 760px) {
@@ -246,5 +273,20 @@
   .section__footer .section__wrapper > div {
     flex: 0 0 calc((100% / 2) - 2rem);
   }
+
+  #modal .slidBtn {
+    top: 5%;
+  }
   /* end of footer */
+
+  /* our room list */
+
+  .room {
+    height: 30.5rem;
+  }
+  
+  .room__list .room {
+    flex: 0 0 calc((100% / 4) - 1rem);
+  }
+  /* end of our room list */
 }

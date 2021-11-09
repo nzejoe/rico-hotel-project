@@ -18,7 +18,6 @@
             <div class="navbar">
                 <div class="navbar__logo">
                     <h1 class="logo__initials">RPH</h1>
-                    {% comment %} <small class="logo__letters">rico palace hotel</small> {% endcomment %}
                 </div>
                 <div class="navbar__navigation">
                     <div class="toggle__btn" id="toggle__btn">
@@ -56,7 +55,10 @@
             </div>    
         </div>
     </header>
-    {% block hero %}{% endblock hero %}
+    {% block hero %}
+    {% endblock hero %}
+    {% block page__title %}
+    {% endblock page__title %}
     <div id="content">
         {% block content %}
             

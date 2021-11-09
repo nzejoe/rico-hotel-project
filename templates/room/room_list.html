@@ -2,14 +2,76 @@
 
 {% block title %}Room List | RPH{% endblock title %}
 
+{% block page__title %}
+    <div class="page__header">
+        <h1>our rooms</h1>
+    </div>
+{% endblock page__title %}
+
 {% block content %}
-    {% for room in rooms %}
-        <div class="room">
-            <img src="{{ room.photo.url }}" alt="{{ room.room_number }}" width="300px">
-            <p>{{ room.room_number }}</p>
-            <p>{{ room.room_type.name }}</p>
-            <p>{{ room.room_type.price }}</p>
-            <a href="{{ room.get_absolute_url }}">read more</a>
+    <section class="section section__our_rooms">
+        <div class="section__wrapper">
+            <div class="room__list">
+            {% for room in rooms %}
+                <div class="room">
+                    <div class="room__img_container">
+                        <img src="{{ room.photo.url }}" alt="{{ room.room_number }}">
+                    </div>
+                    <div class="room__detail">
+                        <div class="room__desc">
+                            <div>
+                                <h4>{{ room.room_number }}</h4>
+                                <p class="room__type">{{ room.room_type.name }}</p>
+                            </div>
+                            <div>
+                                <p class="price__desc">avg/night</p>
+                                <p class="room__price">${{ room.room_type.price }}</p>
+                            </div>
+                        </div>
+                        <div class="room__actions">
+                            <a class="room__detail_link" href="{{ room.get_absolute_url }}">view</a>
+                            <a class="room__book_link" href="{% url 'book_room' room.slug %}">book</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            {% if rooms.has_other_pages %}
+                <div class="room__page_actions">
+                    <ul class="page__links">
+                        <!-- previous page -->
+                        {% if rooms.has_previous %}
+                            <li class="page_link previous__link">
+                                <a href="?page={{ rooms.previous_page_number }}">previous</a>
+                            </li>
+                        {% else %}
+                            <li class="page__link  previous__link disabled">previous</li>
+                        {% endif %}<!-- previous page //-->
+
+                        <!-- page numbers -->
+                        {% for page_number in rooms.paginator.page_range %}
+                            {% if rooms.number == page_number %}
+                                <li class="page__link active__page page__number">
+                                    <a href="?page={{ page_number }}">{{ page_number }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page__link page__number">
+                                    <a href="?page={{ page_number }}">{{ page_number }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %} <!-- page numbers //-->
+
+                        <!-- next page -->
+                        {% if rooms.has_next %}
+                            <li class="page__link next__link">
+                                <a href="?page={{ rooms.next_page_number }}">next</a>
+                            </li>
+                        {% else %}
+                            <li class="page__link next__link disabled">next</li>
+                        {% endif %}<!-- next page //-->
+                    </ul>
+                </div>
+            {% endif %}
         </div>
-    {% endfor %}
+    </section>
 {% endblock content %}

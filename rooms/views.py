@@ -1,6 +1,7 @@
 import datetime
 from django.shortcuts import render
 from django.views import generic
+from django.core.paginator import Paginator
 
 #utils
 from utils.bookings import get_booked_dates
@@ -9,10 +10,16 @@ from .models import Room
 from bookings.models import BookedRoom
 
 
-class RoomList(generic.ListView):
-    model = Room
-    template_name = 'room/room_list.html'
-    context_object_name = 'rooms'
+def room_list(request):
+     rooms = Room.objects.all().order_by('room_number')
+     paginator = Paginator(rooms, 8)
+     page = request.GET.get('page')
+     page_room_list = paginator.get_page(page)
+     
+     context = {
+         'rooms': page_room_list
+     }
+     return render(request, 'room/room_list.html', context)
 
 
 class RoomDetail(generic.DetailView):
