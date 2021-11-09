@@ -14,45 +14,47 @@
 </head>
 <body>
     <header class="header">
-        <div class="navbar">
-            <div class="navbar__logo">
-                <h1 class="logo__initials">RPH</h1>
-                {% comment %} <small class="logo__letters">rico palace hotel</small> {% endcomment %}
-            </div>
-            <div class="navbar__navigation">
-                <div class="toggle__btn" id="toggle__btn">
-                    <span class="toggle__icon"></span>
+        <div class="navbar__wrapper">
+            <div class="navbar">
+                <div class="navbar__logo">
+                    <h1 class="logo__initials">RPH</h1>
+                    {% comment %} <small class="logo__letters">rico palace hotel</small> {% endcomment %}
                 </div>
-                <div class="nav__link_wrapper" id="nav__link_wrapper">
-                    <div class="nav__links">
-                        <a class="nav__link" href={% url 'home' %}>Home</a>
-                        <a class="nav__link" href={% url 'room_list' %}>Our rooms</a>
+                <div class="navbar__navigation">
+                    <div class="toggle__btn" id="toggle__btn">
+                        <span class="toggle__icon"></span>
                     </div>
-                    {% block header %}
-                        {% if user.is_authenticated %}
-                            <div class="user__info">
-                                <div class="user__greeting">
-                                    <span > Welcome, {{ user.customer.first_name}}!</span>
-                                    <i class="fas fa-angle-double-down down"></i>
-                                    <i class="fas fa-angle-double-up up"></i>
+                    <div class="nav__link_wrapper" id="nav__link_wrapper">
+                        <div class="nav__links">
+                            <a class="nav__link" href={% url 'home' %}>Home</a>
+                            <a class="nav__link" href={% url 'room_list' %}>Our rooms</a>
+                        </div>
+                        {% block header %}
+                            {% if user.is_authenticated %}
+                                <div class="user__info">
+                                    <div class="user__greeting">
+                                        <span > Welcome, {{ user.customer.first_name}}!</span>
+                                        <i class="fas fa-angle-double-down down"></i>
+                                        <i class="fas fa-angle-double-up up"></i>
+                                    </div>
+                                    <div class="user__links">
+                                        <a class="nav__link" href="{% url 'my_bookings' %}">My bookings</a>
+                                        <a class="nav__link" href="{% url 'password_change' %}">Change password</a>
+                                        <a class="nav__link" href="{% url 'logout' %}">Log out</a>
+                                    </div>
                                 </div>
-                                <div class="user__links">
-                                    <a class="nav__link" href="{% url 'my_bookings' %}">My bookings</a>
-                                    <a class="nav__link" href="{% url 'password_change' %}">Change password</a>
-                                    <a class="nav__link" href="{% url 'logout' %}">Log out</a>
-                                </div>
-                            </div>
-                        {% else %}
-                             <div class="user__info">
-                                <a class="nav__link" href="{% url 'login' %}">Log in</a>
-                                <a class="nav__link" href="{% url 'register' %}">Register</a>
-                            </div> 
-                                
-                        {% endif %}
-                    {% endblock header %} 
+                            {% else %}
+                                <div class="user__info">
+                                    <a class="nav__link" href="{% url 'login' %}">Log in</a>
+                                    <a class="nav__link" href="{% url 'register' %}">Register</a>
+                                </div> 
+                                    
+                            {% endif %}
+                        {% endblock header %} 
+                    </div>
                 </div>
-            </div>
-        </div>    
+            </div>    
+        </div>
     </header>
     {% block hero %}{% endblock hero %}
     <div id="content">
@@ -60,6 +62,178 @@
             
         {% endblock content %}
     </div>
+
+    <!-- section our partners -->
+    <section class="section section__our_partners">
+        <div class="section__wrapper">
+            <div class="our__partners_info">
+                <div class="primary__title">
+                    <h1 class="title">our partners</h1>
+                    <div class="underline"></div>
+                </div>
+                <p class="our__partners_text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio nobis fuga aut blanditiis at magni dolore vel aperiam quo, exercitationem minus mollitia perspiciatis 
+                </p>
+            </div>
+            <div class="our__partners_viewer">
+                <ul id="our__partners" >
+                    <li class="partner">
+                        <div class="partner__logo_container">
+                            <img src="{% static 'images/partners/partner_1.jpg' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="partner">
+                        <div class="partner__logo_container">
+                            <img src="{% static 'images/partners/partner_2.jpg' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="partner">
+                        <div class="partner__logo_container">
+                            <img src="{% static 'images/partners/partner_3.jpg' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="partner">
+                        <div class="partner__logo_container">
+                            <img src="{% static 'images/partners/partner_4.jpg' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="partner">
+                        <div class="partner__logo_container">
+                            <img src="{% static 'images/partners/partner_5.jpg' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="partner">
+                        <div class="partner__logo_container">
+                            <img src="{% static 'images/partners/partner_6.jpg' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="partner">
+                        <div class="partner__logo_container">
+                            <img src="{% static 'images/partners/partner_7.jpg' %}" alt="">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section><!-- end of section our partners //-->
+
+    <!-- section footer -->
+    <footer >
+        {% comment %} <div id="footer__modal"></div> {% endcomment %}
+        <section class="section section__footer" id="footer">
+            <div class="section__wrapper">
+                <div class="footer__part_1">
+                    <div class="footer__about_us">
+                        <div class="secondary__title">
+                            <h3 class="title">about us</h3>
+                            <div class="underline"></div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim iure quia, odit repellat sequi saepe!</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae mollitia eius repellendus minus dolorem libero alias tempore ab beatae qui.</p>
+                        <div class="social__icon">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__quick_links">
+                        <div class="secondary__title">
+                            <h3 class="title">quick links</h3>
+                            <div class="underline"></div>
+                        </div>
+                        <ul class="quick__links">
+                            <li class="quick__link">
+                                <i class="fas fa-minus-circle"></i>
+                                <a href="{% url 'home' %}">Home</a>
+                            </li>
+                            <li class="quick__link">
+                                <i class="fas fa-minus-circle"></i>
+                                <a href="#about">About us </a>
+                            </li>
+                            <li class="quick__link">
+                                <i class="fas fa-minus-circle"></i>
+                                <a href="#blog">Our Blog </a>
+                            </li>
+                            <li class="quick__link">
+                                <i class="fas fa-minus-circle"></i>
+                                <a href="#services">Our Services </a>
+                            </li>
+                            <li class="quick__link">
+                                <i class="fas fa-minus-circle"></i>
+                                <a href="#faq">FAQs </a>
+                            </li>
+                            <li class="quick__link">
+                                <i class="fas fa-minus-circle"></i>
+                                <a href="#contact">Contact Us </a>
+                            </li>
+                            <li class="quick__link">
+                                <i class="fas fa-minus-circle"></i>
+                                <a href="{% url 'my_bookings' %}">My Bookings </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__part_2">
+                    <div class="instagram__post_gallery">
+                        <div class="secondary__title">
+                            <h3 class="title">Our Instagram</h3>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="instagram__posts">
+                            <div class="instagram__post">
+                                <img src="{% static 'images/instagram/instagram_1.jpg' %}" alt="">
+                            </div>
+                            <div class="instagram__post">
+                                <img src="{% static 'images/instagram/instagram_2.jpg' %}" alt="">
+                            </div>
+                            <div class="instagram__post">
+                                <img src="{% static 'images/instagram/instagram_3.jpg' %}" alt="">
+                            </div>
+                            <div class="instagram__post">
+                                <img src="{% static 'images/instagram/instagram_4.jpg' %}" alt="">
+                            </div>
+                            <div class="instagram__post">
+                                <img src="{% static 'images/instagram/instagram_5.jpg' %}" alt="">
+                            </div>
+                            <div class="instagram__post">
+                                <img src="{% static 'images/instagram/instagram_6.jpg' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news__letter">
+                        <div class="secondary__title">
+                            <h3 class="title">newsletter</h3>
+                            <div class="underline"></div>
+                        </div>
+                        <p class="news__text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, animi doloremque omnis dolor debitis impedit.
+                        </p>
+                        <form action="" class="news__letter_form">
+                            <div class="form__group">
+                                <input type="email" class="form__control" placeholder="Enter your email">
+                            </div>
+                            <div class="form__group">
+                                <button class="primary__link_btn news__letter_submit" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section__copyright">
+            <span><i class="far fa-copyright"></i> <span id="year">2020</span> RPH &#124;  All Rights Reserved.</span>
+        </div>
+    </footer><!-- end of section footer //-->
+
     {% block script %}{% endblock script %}
     
     <script src={% static 'js/script.js' %}></script>

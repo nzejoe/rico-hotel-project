@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block hero %}
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero__photo_viewer">
             <div class="hero__photo_slider">
                 <div class="hero__photo_slide">
@@ -47,7 +47,7 @@
 {% block content %}
     {% include 'include/messages.html' %}
 
-    <!-- section hero -->
+    <!-- section about us -->
     <section class="section section__about" id="about">
         <div class="section__wrapper">
             <div class="about__info">
@@ -75,7 +75,7 @@
     </section><!-- // end of section about -->
 
     <!-- section services -->
-    <section class="section section__services">
+    <section class="section section__services" id="services">
         <div class="section__wrapper">
             <div class="service__info">
                 <div class="primary__title">
@@ -266,7 +266,7 @@
     </section><!-- // end of section why choose us -->
 
     <!-- section our blog -->
-    <section class="section section__blog">
+    <section class="section section__blog" id="blog">
         <div class="section__wrapper blog__wrapper">
             <div class="our__blog_info">
                 <div class="primary__title">

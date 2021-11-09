@@ -10,7 +10,7 @@ $(document).ready(function () {
 
   const showLinkToggler = () => {
     navLinks.toggleClass("show__links");
-    toggleBtn.toggleClass("turn");
+    toggleBtn.toggleClass("turn")
   };
   // toggle button clicked
   toggleBtn.on("click", showLinkToggler);
@@ -83,13 +83,11 @@ $(document).ready(function () {
   btnLeft.on("click", () => {
     clearInterval(timer);
     move(currentIndex - 1, "100%");
-    key = 1;
   });
 
   btnRight.on("click", () => {
     clearInterval(timer);
     move(currentIndex + 1, "-100%");
-    key = 2;
   });
 
   handleSlideShow()
@@ -138,7 +136,7 @@ $(document).ready(function () {
     item: 3,
     loop: true,
     slideMargin: 30,
-    auto: true,
+    // auto: true,
     slideMove: 2,
     easing: "cubic-bezier(0.25, 0, 0.25, 1)",
     speed: 1000,
@@ -169,4 +167,124 @@ $(document).ready(function () {
     ],
   }); 
   //******************** end of our blog  *************************/
+
+  //******************** our partners  *************************/
+  $("#our__partners").lightSlider({
+    item: 6,
+    loop: true,
+    slideMargin: 30,
+    auto: true,
+    slideMove: 2,
+    easing: "cubic-bezier(0.25, 0, 0.25, 1)",
+    speed: 1000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          item: 6,
+          slideMove: 1,
+          slideMargin: 20,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          item: 4,
+          slideMove: 1,
+          slideMargin: 20,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          item: 2,
+          slideMove: 1,
+        },
+      },
+    ],
+  }); 
+  //******************** end of our partners  *************************/
+
+  //******************** footer section  *************************/
+  const footerYear = $('#year')
+  const date = new Date()
+  footerYear.text(date.getFullYear()) // render year to footer year element
+
+  // instagram gallery viewer
+  
+  const body = $('body');
+  const modal = $('<div id="modal"></div>');
+  const footerOverlay = $('<div class="footer__overlay"></div>');
+  const footerIMGViewer = $('<div class="viewer"></div>'); // image viewer
+  const footerIMGSlider = $('<div class="slider"></div>'); // image slider
+  const footerSlideBtn = $(
+    '<div class="slidBtn"><div class="prevBtn btn"><i class="fas fa-angle-double-left"></i></div><div class="nextBtn btn"><i class="fas fa-angle-double-right"></i></div></div>'
+  );
+  const IGSlides = $('.instagram__post') // instagram images
+  let clonedSlides = null;
+  let footerSlider = null;
+  let footerIndex = 0
+
+
+  const footerMove = (newIndex, position) => {
+    if (footerIndex > newIndex) {
+      animate = "-100%";
+    } else {
+      animate = "100%";
+    }
+
+    if (newIndex < 0) {
+      newIndex = 1;
+    } else if (newIndex > clonedSlides.length - 1) {
+      newIndex = 0;
+    }
+
+    clonedSlides.eq(newIndex).css({ display: "block", left: position });
+
+    footerSlider.not(':animated').animate({ left: animate }, () => {
+      clonedSlides.eq(footerIndex).css({ display: "none" });
+      clonedSlides.eq(newIndex).css({ left: "0" });
+      footerSlider.css({ left: "0" });
+      footerIndex = newIndex;
+    });
+  };
+
+
+  IGSlides.on('click', function(){
+    modal.empty(); // first empty
+    clonedSlides = IGSlides.clone(); // clone slides
+    
+    footerIndex = IGSlides.index(this);
+
+    // join the div
+    footerIMGSlider.append(clonedSlides);
+    footerIMGViewer.append(footerIMGSlider);
+    footerIMGViewer.prepend(footerSlideBtn);
+    modal.append(footerIMGViewer);
+    modal.prepend(footerOverlay);
+    body.prepend(modal);
+    footerSlider = $('#modal .slider')
+
+    body.addClass("modal__open");
+    clonedSlides.eq(footerIndex).css({ display: "block" });
+  })
+
+  $(document).on("click", ".footer__overlay", function () {
+    modal.empty();
+    modal.remove();
+    body.removeClass("modal__open");
+  });
+
+  $(document).on("click", "#modal .prevBtn", function () {
+    footerMove(footerIndex - 1, "100%");
+    console.log(footerIndex)
+  });
+  
+  $(document).on("click", "#modal .nextBtn", function () {
+    footerMove(footerIndex + 1, "-100%");
+    console.log(footerIndex)
+  });
+  //******************** end of our footer section  *************************/
+
+
 });
