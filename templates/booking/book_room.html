@@ -2,22 +2,34 @@
 
 {% block title %}Book {{ room.room_number }}{% endblock title %}
 
-{% block content %}
-    <div class="booking__form">
-        <form action="{% url 'book_room' room.slug %}" method="POST">
-            {% csrf_token %}
-            <p>{{ form.non_field_errors }}</p>
-            <div class="form-group">
-                {{form.start_date.label}}
-                {{form.start_date}}
-                {{form.start_date.errors}}
-            </div>
-            <div class="form-group">
-                {{form.duration.label}}
-                {{form.duration}}
-            </div>
-            <input type="text" name="room_number" value={{ room.room_number }} hidden>
-            <button type="submit">Book</button>
-        </form>
+{% block page__title %}
+    <div class="page__header">
+        <h1>room booking</h1>
     </div>
+{% endblock page__title %}
+
+{% block content %}
+<section class="section section__room_booking page__section">
+    <div class="section__wrapper">
+        <div class="booking__form">
+            <form action="{% url 'book_room' room.slug %}" method="POST">
+                {% csrf_token %}
+                <p>{{ form.non_field_errors }}</p>
+                <div>
+                    <div class="form__group">
+                        {{form.start_date.label}}
+                        {{form.start_date}}
+                        {{form.start_date.errors}}
+                    </div>
+                    <div class="form__group">
+                        {{form.duration.label}}
+                        {{form.duration}}
+                    </div>
+                </div>
+                <input type="hidden" name="room_number" value={{ room.room_number }}>
+                <button type="submit">Book</button>
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock content %}

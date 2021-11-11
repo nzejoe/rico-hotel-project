@@ -18,10 +18,11 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = ['start_date', 'duration', 'room_number', ]
         labels = {
-            'duration': 'Number of days',
+            'start_date': 'Check in',
+            'duration': 'Number of nights',
         }
         widgets = {
-            'start_date': forms.DateInput(attrs={'type': 'date', 'min': now.date()}),
+            'start_date': forms.DateInput(attrs={'type': 'date', 'min': now.date().today()}),
             'duration': forms.NumberInput(attrs={'min': 1}),
         }
 

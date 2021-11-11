@@ -468,3 +468,75 @@
   padding: 2rem 0;
 }
 /********************** end of room detail  ************************/
+
+/********************** room booking  ************************/
+.section__room_booking{
+  height: calc(100vh - 30rem); /* 100vh - height of navbar (5rem) and page header (25rem) */
+  position: relative;
+}
+
+.booking__form{
+  font-family: var(--font-2);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 50rem;
+  height: 25rem;
+  box-shadow: var(--light-shadow-2);
+  background-color: #fff;
+  padding: 2rem 0;
+}
+
+.booking__form form{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.booking__form .form__group{
+  margin-bottom: 2rem;
+}
+
+.booking__form input{
+  display: block;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 3rem;
+  border-radius: 10rem;
+  padding: 2rem;
+  background-color: var(--color-primary-trans);
+  margin-top: 1rem;
+}
+
+.booking__form .form__group{
+  text-transform: capitalize;
+  font-weight: 600;
+  color: var(--color-dark-2);
+}
+
+.booked_form .form__action{
+  width: 100%;
+  text-align: right;
+}
+
+.booking__form button{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 10rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  transition: all .3s;
+  float: right;
+}
+
+.booking__form button:hover{
+  background-color: #000;
+}
+
+/********************** end of room booking  ************************/
