@@ -144,3 +144,18 @@ section.section__blog .lSAction > a{
   text-transform: capitalize;
 }
 /************* end of page header  ****************/
+
+/************* tabbed panel  ****************/
+.tab__panel{
+  display: none;
+}
+.tab__panel.active{
+  display: block;
+}
+/************* end of tabbed panel  ****************/
+
+/************* accordion panel  ****************/
+.accodion__panel{
+  display: none;
+}
+/************* end of accordion panel  ****************/

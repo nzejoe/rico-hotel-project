@@ -201,6 +201,38 @@
     flex: 0 0 calc((100% / 2) - 1rem);
   }
   /* end of our room list */
+
+  /* room detail */
+  .section__room_detail .tab__list {
+    width: 50%;
+    justify-content: space-between;
+  }
+
+  .section__room_detail .tab__list li {
+    flex: 0 0 calc((100% / 3) - 0.3rem);
+  }
+
+  .section__room_detail #tab__1 > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .section__room_detail #tab__1 > div .about__info,
+  .section__room_detail #tab__1 > div .room__status {
+    flex: 0 0 calc((100% / 2) - 1rem);
+  }
+
+  .section__room_detail #tab__2 ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .section__room_detail #tab__2 ul li {
+    flex: 0 0 calc((100% / 2));
+  }
+  /* end of room detail */
 }
 
 @media screen and (min-width: 760px) {
@@ -284,9 +316,15 @@
   .room {
     height: 30.5rem;
   }
-  
+
   .room__list .room {
     flex: 0 0 calc((100% / 4) - 1rem);
   }
   /* end of our room list */
+
+  /* room detail */
+  .section__room_detail #tab__2 ul li {
+    flex: 0 0 calc((100% / 3));
+  }
+  /* end of room detail */
 }

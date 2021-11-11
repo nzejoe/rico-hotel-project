@@ -1,24 +1,163 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ room.room_number }} | RPH{% endblock title %}
 
-{% block content %}
-    <div class="room__detail">
-        <img src="{{ room.photo.url }}" alt="{{ room.room_number }}" width="720px">
-        <p>{{ room.room_number }}</p>
-        <p>{{ room.room_type.name }}</p>
-        <p>{{ room.room_type.price }}</p>
-        <a href="{% url 'book_room' room.slug %}">Book this room</a>
-        {% if booked_dates  %}
-            <p>This room has been Booked for the following days: </p>
-            <div class="booked_dates">
-            {% for date in booked_dates %}
-                <span>{{ date }}</span>
-                <hr>
-            {% endfor %}
-            </div>
-        {% else %}
-            <p>This room is available</p>
-        {% endif %}
+{% block page__title %}
+    <div class="page__header">
+        <h1>{{ room.room_number }} details</h1>
     </div>
+{% endblock page__title %}
+
+{% block content %}
+    <section class="section section__room_detail page__section">
+        <div class="section__wrapper">
+            <div class="room__detail">
+                <ul id="roomGallery">
+                    <li data-thumb="{{ room.photo.url }}" data-src="{{ room.photo.url }}">
+                        <img src="{{ room.photo.url }}" />
+                    </li>
+                    <li data-thumb="{% static 'images/room_gallery/room_gallery_1.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_1.jpg' %}">
+                        <img src="{% static 'images/room_gallery/room_gallery_1.jpg' %}" />
+                    </li>
+                    <li data-thumb="{% static 'images/room_gallery/room_gallery_2.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_2.jpg' %}">
+                        <img src="{% static 'images/room_gallery/room_gallery_2.jpg' %}" />
+                    </li>
+                    <li data-thumb="{% static 'images/room_gallery/room_gallery_3.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_3.jpg' %}">
+                        <img src="{% static 'images/room_gallery/room_gallery_3.jpg' %}" />
+                    </li>
+                    <li data-thumb="{% static 'images/room_gallery/room_gallery_4.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_4.jpg' %}">
+                        <img src="{% static 'images/room_gallery/room_gallery_4.jpg' %}" />
+                    </li>
+                </ul>
+                <div class="room__detail_info">
+                    <ul class="tab__list">
+                        <li class="active"><a href="#tab__1" class="tab__control">Overview</a></li>
+                        <li><a href="#tab__2" class="tab__control">Amenities</a></li>
+                        <li ><a href="#tab__3" class="tab__control">FAQs</a></li>
+                    </ul>
+                    <div class="tab__panel active" id="tab__1">
+                        <h3>about this room</h3>
+                        <div>
+                            <ul class="about__info">
+                                <li><span >room type:</span><span> {{ room.room_type.name }}</span></li>
+                                <li><span >price per night:</span><span> ${{ room.room_type.price }}</span></li>
+                                <li><span>person capacity:</span><span> {{ room.person_capacity }}</span></li>
+                                <li><span>extra people:</span><span> no charge</span></li>
+                                <li><span>bed type:</span><span> king size</span></li>
+                                <li><span>building floor:</span><span> {{ room.floor }}</span></li>
+                                <li><span>minimum stay:</span><span> from a night</span></li>
+                                <li><span>cancelletion:</span><span> strict</span></li>
+                            </ul>
+                            <div class="room__status">
+                                <h5>room status</h5>
+                                {% if booked_dates  %}
+                                    <p>This room has been booked for these days: </p>
+                                    <ul class="booked_dates">
+                                        {% for date in booked_dates %}
+                                            <li>{{ date }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p>This room is available</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab__panel" id="tab__2">
+                        <h3>Amenities</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum est nesciunt placeat exercitationem commodi nulla corrupti cum cumque vitae at?</p>
+                        <ul>
+                            <li><i class="fas fa-coffee"></i> coffee</li>
+                            <li><i class="fas fa-swimming-pool"></i>swimming pool</li>
+                            <li><i class="fas fa-wifi"></i>wi-fi</li>
+                            <li><i class="fas fa-tv"></i>television</li>
+                            <li><i class="fas fa-dumbbell"></i>fitness facility</li>
+                            <li><i class="fas fa-wine-glass"></i>wine bar</li>
+                            <li><i class="fas fa-film"></i>entertainment</li>
+                            <li><i class="fas fa-car"></i>pick and drop</li>
+                            <li><i class="fas fa-dog"></i>pets allowed</li>
+                            <li><i class="fas fa-parking"></i>free parking</li>
+                            <li><i class="fas fa-fire"></i>fire place</li>
+                            <li><i class="fas fa-male"></i>doorman</li>
+                            <li><i class="fas fa-cogs"></i>elevator in building</li>
+                            <li><i class="fas fa-concierge-bell"></i>comp. breakfast</li>
+                            <li><i class="fas fa-fan"></i>air conditioning</li>
+                            <li><i class="fas fa-temperature-low"></i>fridge</li>
+                            <li><i class="fas fa-smoking"></i>smoking allowed</li>
+                            <li><i class="fas fa-door-closed"></i>secure vault</li>
+                            <li><i class="fas fa-male"></i>room service</li>
+                            <li><i class="fas fa-football-ball"></i>playground</li>
+                            <li><i class="fas fa-hotel"></i>conference room</li>
+                            <li><i class="fas fa-wheelchair"></i>handicap accessible</li>
+                            <li><i class="fas fa-hot-tub"></i>hot tub</li>
+                            <li><i class="fas fa-calendar-alt"></i>suitable for events</li>
+                        </ul>
+                    </div>
+                    <div class="tab__panel" id="tab__3">
+                        <h3>FQAs Documentation</h3>
+                        <ul class="accordion">
+                            <li>
+                                <button class="accodion__control">
+                                    <i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                                    address &amp; map
+                                </button>
+                                <div class="accodion__panel">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eaque asperiores ea repellat aliquam veniam.
+                                </div>
+                            </li>
+                            <li>
+                                <button class="accodion__control">
+                                    <i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                                    messaging
+                                </button>
+                                <div class="accodion__panel">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eaque asperiores ea repellat aliquam veniam.
+                                </div>
+                            </li>
+                            <li>
+                                <button class="accodion__control">
+                                    <i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                                    refunds
+                                </button>
+                                <div class="accodion__panel">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eaque asperiores ea repellat aliquam veniam.
+                                </div>
+                            </li>
+                            <li>
+                                <button class="accodion__control">
+                                    <i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                                    pricing
+                                </button>
+                                <div class="accodion__panel">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eaque asperiores ea repellat aliquam veniam.
+                                </div>
+                            </li>
+                            <li>
+                                <button class="accodion__control">
+                                    <i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                                    reservation request
+                                </button>
+                                <div class="accodion__panel">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eaque asperiores ea repellat aliquam veniam.
+                                </div>
+                            </li>
+                            <li>
+                                <button class="accodion__control">
+                                    <i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                                    your reservation
+                                </button>
+                                <div class="accodion__panel">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eaque asperiores ea repellat aliquam veniam.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="room__detail_actions">
+                    <a class="secondary__link_btn" href="{% url 'book_room' room.slug %}">Book this room</a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

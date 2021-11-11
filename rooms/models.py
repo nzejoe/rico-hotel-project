@@ -15,7 +15,7 @@ class RoomType(models.Model):
 class Room(models.Model):
     TYPE = (
         ('', 'Choose Type'),
-        ('executive', 'Executive'),
+        ('deluxe', 'Deluxe'),
         ('suite', 'Suite'),
     )
 
