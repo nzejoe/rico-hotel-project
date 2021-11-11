@@ -170,8 +170,8 @@
   }
 
   #modal .viewer {
-    width: 64rem;
-    height: 45rem;
+    width: 70rem;
+    height: 50rem;
   }
 
   #modal .slidBtn {
@@ -327,4 +327,11 @@
     flex: 0 0 calc((100% / 3));
   }
   /* end of room detail */
+
+  /* modal */
+  #modal .viewer {
+    width: 90rem;
+    height: 60rem;
+  }
+  /* end of modal */
 }

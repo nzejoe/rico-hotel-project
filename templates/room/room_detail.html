@@ -14,19 +14,24 @@
         <div class="section__wrapper">
             <div class="room__detail">
                 <ul id="roomGallery">
-                    <li data-thumb="{{ room.photo.url }}" data-src="{{ room.photo.url }}">
+                    <li class="room__detail_img" data-thumb="{{ room.photo.url }}" data-src="{{ room.photo.url }}">
+                        <i class="fas fa-search-plus"></i>
                         <img src="{{ room.photo.url }}" />
                     </li>
-                    <li data-thumb="{% static 'images/room_gallery/room_gallery_1.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_1.jpg' %}">
+                    <li class="room__detail_img" data-thumb="{% static 'images/room_gallery/room_gallery_1.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_1.jpg' %}">
+                        <i class="fas fa-search-plus"></i>
                         <img src="{% static 'images/room_gallery/room_gallery_1.jpg' %}" />
                     </li>
-                    <li data-thumb="{% static 'images/room_gallery/room_gallery_2.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_2.jpg' %}">
+                    <li class="room__detail_img" data-thumb="{% static 'images/room_gallery/room_gallery_2.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_2.jpg' %}">
+                        <i class="fas fa-search-plus"></i>
                         <img src="{% static 'images/room_gallery/room_gallery_2.jpg' %}" />
                     </li>
-                    <li data-thumb="{% static 'images/room_gallery/room_gallery_3.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_3.jpg' %}">
+                    <li class="room__detail_img" data-thumb="{% static 'images/room_gallery/room_gallery_3.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_3.jpg' %}">
+                        <i class="fas fa-search-plus"></i>
                         <img src="{% static 'images/room_gallery/room_gallery_3.jpg' %}" />
                     </li>
-                    <li data-thumb="{% static 'images/room_gallery/room_gallery_4.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_4.jpg' %}">
+                    <li class="room__detail_img" data-thumb="{% static 'images/room_gallery/room_gallery_4.jpg' %}" data-src="{% static 'images/room_gallery/room_gallery_4.jpg' %}">
+                        <i class="fas fa-search-plus"></i>
                         <img src="{% static 'images/room_gallery/room_gallery_4.jpg' %}" />
                     </li>
                 </ul>

@@ -211,87 +211,97 @@ $(document).ready(function () {
   footerYear.text(date.getFullYear()); // render year to footer year element
 
   // instagram gallery viewer
+  const galleryViewHandler = (photos, index) => {
+    const body = $("body");
+    const modal = $('<div id="modal"></div>');
+    const overlayEl = $('<div class="footer__overlay"></div>');
+    const viewerEl = $('<div class="viewer"></div>'); // image viewer
+    const sliderEl = $('<ul class="slider"></ul>'); // image slider
+    const slideBtns = $(
+      '<div class="slidBtn"><div class="prevBtn btn"><i class="fas fa-angle-double-left"></i></div><div class="nextBtn btn"><i class="fas fa-angle-double-right"></i></div></div>'
+    );
+    const counter = $('<span class="postCounter"></span>');
+    let currentIndex = index;
 
-  const body = $("body");
-  const modal = $('<div id="modal"></div>');
-  const footerOverlay = $('<div class="footer__overlay"></div>');
-  const footerIMGViewer = $('<div class="viewer"></div>'); // image viewer
-  const footerIMGSlider = $('<div class="slider"></div>'); // image slider
-  const footerSlideBtn = $(
-    '<div class="slidBtn"><div class="prevBtn btn"><i class="fas fa-angle-double-left"></i></div><div class="nextBtn btn"><i class="fas fa-angle-double-right"></i></div></div>'
-  );
-  const counter = $('<span class="postCounter"></span>');
-  const IGSlides = $(".instagram__post"); // instagram images
-  let clonedSlides = null;
-  let footerSlider = null;
-  let footerIndex = 0;
+    const clonedSlides = photos.clone(); // clone slides
 
-  const footerMove = (newIndex, position) => {
-    if (footerIndex > newIndex) {
-      animate = "100%";
-    } else {
-      animate = "-100%";
-    }
+    // remove styles that's already present in the photos :- this is for room detail gallery
+    clonedSlides.each(function(){
+      $(this).removeAttr("style");
+    })
 
-    if (newIndex < 0) {
-      newIndex = 1;
-    } else if (newIndex > clonedSlides.length - 1) {
-      newIndex = 0;
-    }
+    modal.empty(); // first empty
 
-    clonedSlides.eq(newIndex).css({ display: "block", left: position });
+    // join the div
+    sliderEl.append(clonedSlides);
+    viewerEl.append(sliderEl);
+    modal.prepend(slideBtns);
+    modal.append(viewerEl);
+    modal.prepend(overlayEl);
+    body.prepend(modal);
 
-    footerSlider.not(":animated").animate({ left: animate }, 800, () => {
-      clonedSlides.eq(footerIndex).css({ display: "none" });
-      clonedSlides.eq(newIndex).css({ left: "0" });
-      footerSlider.css({ left: "0" });
-      footerIndex = newIndex;
-      postCounter(footerIndex);
+    const slider = $("#modal .slider");
+
+    body.addClass("modal__open");
+    clonedSlides.eq(currentIndex).css({ display: "block" });
+
+    // post counter
+    const postCounter = (index) => {
+      // this render the number of post/posts length
+      counter.text(`${index + 1}/${clonedSlides.length}`);
+      viewerEl.append(counter);
+    };
+
+    const moveHandler = (newIndex, position) => {
+      if (currentIndex > newIndex) {
+        animate = "100%";
+      } else {
+        animate = "-100%";
+      }
+
+      if (newIndex < 0) {
+        newIndex = 1;
+      } else if (newIndex > clonedSlides.length - 1) {
+        newIndex = 0;
+      }
+
+      clonedSlides.eq(newIndex).css({ display: "block", left: position });
+
+      slider.not(":animated").animate({ left: animate }, 800, () => {
+        clonedSlides.eq(currentIndex).css({ display: "none" });
+        clonedSlides.eq(newIndex).css({ left: "0" });
+        slider.css({ left: "0" });
+        currentIndex = newIndex;
+        postCounter(currentIndex);
+      });
+    };
+
+    // call post counter
+    postCounter(currentIndex); // from index for the first render to get accurate index
+
+    $(document).on("click", ".footer__overlay", function () {
+      modal.empty();
+      modal.remove();
+      body.removeClass("modal__open");
+    });
+
+    $(document).on("click", "#modal .prevBtn", function () {
+      moveHandler(currentIndex - 1, "-100%");
+    });
+
+    $(document).on("click", "#modal .nextBtn", function () {
+      moveHandler(currentIndex + 1, "100%");
     });
   };
 
-  // post counter
-  const postCounter = (index) => {
-    // this render the number of post/posts length
-    counter.text(`${index + 1}/${clonedSlides.length}`);
-    footerIMGViewer.append(counter);
-  };
-
+  // instagram image gallery
+  const IGSlides = $(".instagram__post");
   IGSlides.on("click", function () {
-    modal.empty(); // first empty
-    clonedSlides = IGSlides.clone(); // clone slides
-
-    footerIndex = IGSlides.index(this);
-
-    // join the div
-    footerIMGSlider.append(clonedSlides);
-    footerIMGViewer.append(footerIMGSlider);
-    modal.prepend(footerSlideBtn);
-    modal.append(footerIMGViewer);
-    modal.prepend(footerOverlay);
-    body.prepend(modal);
-    footerSlider = $("#modal .slider");
-
-    body.addClass("modal__open");
-    clonedSlides.eq(footerIndex).css({ display: "block" });
-
-    // call post counter
-    postCounter(footerIndex); // from index for the first render to get accurate index
+    const IGIndex = IGSlides.index(this);
+    galleryViewHandler(IGSlides, IGIndex);
   });
 
-  $(document).on("click", ".footer__overlay", function () {
-    modal.empty();
-    modal.remove();
-    body.removeClass("modal__open");
-  });
 
-  $(document).on("click", "#modal .prevBtn", function () {
-    footerMove(footerIndex - 1, "-100%");
-  });
-
-  $(document).on("click", "#modal .nextBtn", function () {
-    footerMove(footerIndex + 1, "100%");
-  });
   //******************** end of our footer section  *************************/
 
   //******************** section room detail  *************************/
@@ -305,11 +315,11 @@ $(document).ready(function () {
       slideMargin: 0,
       enableDrag: false,
       currentPagerPosition: "left",
-      onSliderLoad: function (el) {
-        el.lightGallery({
-          selector: "#roomGallery .lslide",
-        });
-      },
+      // onSliderLoad: function (el) {
+      //   el.lightGallery({
+      //     selector: "#roomGallery .lslide",
+      //   });
+      // },
     });
   });
   // tabbed panel
@@ -342,21 +352,23 @@ $(document).ready(function () {
       // this code order must be maintained
       e.preventDefault();
       const activeControl = $(".accodion__control.active");
-    
+
       // 1st: toggle active class
-        $(this)
-          .addClass("active")
-          .next()
-          .not(":animated")
-          .slideToggle();
+      $(this).addClass("active").next().not(":animated").slideToggle();
 
       // 2nd: remove previous active class
-         activeControl // slide current active up
-           .removeClass("active")
-           .next()
-           .slideUp()
-
+      activeControl // slide current active up
+        .removeClass("active")
+        .next()
+        .slideUp();
     });
+  });
+
+  // room detail gallery viewer
+  const roomIMGgallery = $("#roomGallery .room__detail_img");
+  roomIMGgallery.on("click", function () {
+    const roomIMGIndex = roomIMGgallery.index(this); // room image index
+    galleryViewHandler(roomIMGgallery, roomIMGIndex);
   });
 
   //******************** end of section room detail  *************************/

@@ -88,27 +88,26 @@
   height: 4rem;
   border-radius: 50%;
   background-image: none;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-.lSAction > a:hover{
+.lSAction > a:hover {
   transform: scale(1.3);
 }
 
-.lSAction > a > i{
-    color: var(--color-red);
+.lSAction > a > i {
+  color: var(--color-red);
 }
 
 /* our blog */
-section.section__blog .lSAction > a{
+section.section__blog .lSAction > a {
   top: 2rem;
 }
 
 /************* end of 3rd party  ****************/
 
-
 /************* page header  ****************/
-.page__header{
+.page__header {
   background: rgba(0, 0, 0, 0.541);
   width: 100%;
   height: 25rem;
@@ -117,11 +116,11 @@ section.section__blog .lSAction > a{
   top: 5rem;
 }
 
-.page__header::after{
+.page__header::after {
   content: "";
   display: block;
   position: absolute;
-  background: url('../images/pages/page_header.jpg');
+  background: url("../images/pages/page_header.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -134,7 +133,7 @@ section.section__blog .lSAction > a{
   height: 100%;
 }
 
-.page__header h1{
+.page__header h1 {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -146,16 +145,110 @@ section.section__blog .lSAction > a{
 /************* end of page header  ****************/
 
 /************* tabbed panel  ****************/
-.tab__panel{
+.tab__panel {
   display: none;
 }
-.tab__panel.active{
+.tab__panel.active {
   display: block;
 }
 /************* end of tabbed panel  ****************/
 
 /************* accordion panel  ****************/
-.accodion__panel{
+.accodion__panel {
   display: none;
 }
 /************* end of accordion panel  ****************/
+
+/************* modal  ****************/
+
+/* modal */
+#modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 101;
+}
+.footer__overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  opacity: 0.8;
+  z-index: 102;
+}
+
+#modal .viewer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  height: 20rem;
+  z-index: 103;
+  overflow: hidden;
+}
+
+#modal .slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+#modal li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+}
+#modal li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#modal .slidBtn {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  justify-content: center;
+  z-index: 104;
+}
+
+#modal .slidBtn .btn {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: var(--color-blue-trans);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+#modal .slidBtn .btn i {
+  font-size: 2rem;
+  color: var(--color-red);
+}
+
+#modal .slidBtn .btn:hover {
+  transform: scale(1.3);
+  background-color: var(--color-blue);
+}
+
+#modal .postCounter {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.39);
+  color: #fff;
+  z-index: 9999;
+}
+/************* end of modal  ****************/
