@@ -252,3 +252,49 @@ section.section__blog .lSAction > a {
   z-index: 9999;
 }
 /************* end of modal  ****************/
+
+/************* tabbed panel  ****************/
+.tab__list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.tab__list li {
+  flex: 0 0 calc((100% / 2) - 0.3rem);
+  text-align: center;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.tab__list li a,
+.tab__list li a:link,
+.tab__list li a:visited {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  font-weight: 400;
+  color: #000;
+  padding: 1.5rem 0;
+  transition: all 0.5s;
+  text-transform: capitalize;
+}
+
+.tab__list li.active {
+  background-color: var(--color-primary);
+}
+
+.tab__list li.active a {
+  color: #fff;
+}
+
+.tab__list li a:hover {
+  background-color: #000;
+  color: #fff;
+}
+/************* end of tabbed panel  ****************/
+
+

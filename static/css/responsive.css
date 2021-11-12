@@ -202,34 +202,36 @@
   }
   /* end of our room list */
 
-  /* room detail */
-  .section__room_detail .tab__list {
+  /* tabbed panel */
+  .tab__list {
     width: 50%;
     justify-content: space-between;
   }
 
-  .section__room_detail .tab__list li {
+  .tab__list li {
     flex: 0 0 calc((100% / 3) - 0.3rem);
   }
+  /* end of tabbed panel */
 
-  .section__room_detail #tab__1 > div {
+  /* room detail */
+  .overview > div {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-  .section__room_detail #tab__1 > div .about__info,
-  .section__room_detail #tab__1 > div .room__status {
+  .overview > div .about__info,
+  .overview > div .room__status {
     flex: 0 0 calc((100% / 2) - 1rem);
   }
 
-  .section__room_detail #tab__2 ul {
+  .amenities ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-  .section__room_detail #tab__2 ul li {
+  .amenities ul li {
     flex: 0 0 calc((100% / 2));
   }
   /* end of room detail */
@@ -244,6 +246,38 @@
     width: 70%;
   }
   /* end of our team */
+
+  /* my room booking */
+  .section__my_bookings .bookings .booking {
+    display: flex;
+    height: 25rem;
+  }
+
+  .section__my_bookings #active .booking,
+  .section__my_bookings #all .booking {
+    display: flex;
+    height: 30rem;
+  }
+
+  .section__my_bookings .bookings .booking__img_container {
+    height: 100%;
+  }
+
+  .section__my_bookings .bookings .booking .booking__detail {
+    height: 100%;
+  }
+
+  .bookings .booking__actions p {
+    width: 20rem;
+    float: right;
+  }
+
+  .paypal {
+    width: 20rem;
+    float: right;
+    clear: right;
+  }
+  /* end of my room booking */
 }
 
 @media screen and (min-width: 800px) {
@@ -323,7 +357,7 @@
   /* end of our room list */
 
   /* room detail */
-  .section__room_detail #tab__2 ul li {
+  .section__room_detail .amenities ul li {
     flex: 0 0 calc((100% / 3));
   }
   /* end of room detail */

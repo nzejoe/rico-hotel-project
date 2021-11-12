@@ -14,14 +14,18 @@ from customers.models import Customer
 
 def my_bookings(request, total_cost=0):
     current_customer = request.user.customer
-    bookings = Booking.objects.filter(customer=current_customer, status='Pending')
-    for booking in bookings:
+    pending_bookings = Booking.objects.filter(customer=current_customer, status='Pending')
+    active_bookings = BookedRoom.objects.filter(customer=current_customer, is_active=True)
+    all_bookings = BookedRoom.objects.filter(customer=current_customer).order_by('-is_active')
+    for booking in pending_bookings:
         total_cost += booking.duration * booking.room.room_type.price
 
     context = {
-        'bookings': bookings,
+        'pending_bookings': pending_bookings,
         'total_cost': total_cost,
-        'domain': get_current_site(request)
+        'domain': get_current_site(request),
+        'active_bookings': active_bookings,
+        'all_bookings': all_bookings,
     }
     return render(request, 'booking/bookings.html', context)
 

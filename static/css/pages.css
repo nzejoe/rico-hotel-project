@@ -183,40 +183,40 @@
   box-shadow: var(--light-shadow-3);
 }
 
-#roomGallery{
+#roomGallery {
   height: 45rem !important;
   /* list-style: none !important; */
 }
 
-#roomGallery li{
+#roomGallery li {
   height: 100% !important;
   width: 100%;
 }
 
-#roomGallery li img{
+#roomGallery li img {
   height: 100% !important;
   width: 100%;
   object-fit: cover;
 }
 
-.section__room_detail .lSPager.lSGallery li{
+.section__room_detail .lSPager.lSGallery li {
   height: 5rem;
   overflow: hidden;
 }
 
 .section__room_detail .lSPager.lSGallery li a,
-.section__room_detail .lSPager.lSGallery li a img{
+.section__room_detail .lSPager.lSGallery li a img {
   height: 100% !important;
   width: 100%;
   object-fit: cover;
 }
 
-.room__detail_img:not(#modal .room__detail_img){
+.room__detail_img:not(#modal .room__detail_img) {
   position: relative;
   cursor: pointer;
 }
 
-.room__detail_img i{
+.room__detail_img i {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -228,7 +228,7 @@
 }
 
 /* modal gallery with the same class excluded from selection */
-#roomGallery .room__detail_img:not(#modal .room__detail_img)::after{
+#roomGallery .room__detail_img:not(#modal .room__detail_img)::after {
   content: "";
   display: block;
   position: absolute;
@@ -237,20 +237,20 @@
   width: 0%;
   height: 100%;
   background-color: var(--color-primary);
-  transition: all .3s;
+  transition: all 0.3s;
   z-index: 1;
-  opacity: .5;
+  opacity: 0.5;
 }
 
-#roomGallery .room__detail_img:not(#modal .room__detail_img):hover::after{
+#roomGallery .room__detail_img:not(#modal .room__detail_img):hover::after {
   width: 100%;
 }
 
-#roomGallery .room__detail_img:not(#modal .room__detail_img):hover i{
+#roomGallery .room__detail_img:not(#modal .room__detail_img):hover i {
   display: inline;
 }
 
-.section__room_detail div.lSAction{
+.section__room_detail div.lSAction {
   display: none !important;
 }
 
@@ -259,138 +259,97 @@
   margin-top: 2rem;
 }
 
-.section__room_detail .tab__list {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  list-style: none;
-  margin-bottom: 2rem;
-}
 
-.section__room_detail .tab__list li {
-  flex: 0 0 calc((100% / 2) - .3rem);
-  text-align: center;
-  border-bottom: 2px solid var(--color-primary);
-}
 
-.section__room_detail .tab__list li a,
-.section__room_detail .tab__list li a:link,
-.section__room_detail .tab__list li a:visited {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  font-weight: 400;
-  color: #000;
-  padding: 1.5rem 0;
-  transition: all .5s;
-}
-
-.section__room_detail .tab__list li.active {
-  background-color: var(--color-primary);
-}
-
-.section__room_detail .tab__list li.active a {
-  color: #fff;
-}
-
-.section__room_detail .tab__list li a:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-.section__room_detail #tab__1 h3{
+.section__room_detail .overview h3 {
   margin-bottom: 2rem;
   text-transform: capitalize;
-} 
-.section__room_detail #tab__1 .about__info, 
-.section__room_detail #tab__1 .room__status {
+}
+.section__room_detail .overview .about__info,
+.section__room_detail .overview .room__status {
   background-color: var(--color-primary-trans);
   margin-bottom: 2rem;
 }
 
-.section__room_detail #tab__1 .about__info{
+.section__room_detail .overview .about__info {
   list-style: none;
   padding: 1rem;
 }
 
-.section__room_detail #tab__1 .about__info li{
+.section__room_detail .overview .about__info li {
   display: flex;
   justify-content: space-between;
 }
 
-.section__room_detail #tab__1 .about__info li > span{
+.section__room_detail .overview .about__info li > span {
   text-transform: uppercase;
   font-size: 1rem;
   padding: 1rem 0;
   color: var(--color-dark-2);
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
-.section__room_detail #tab__1 .about__info li > span:first-child{
+.section__room_detail .overview .about__info li > span:first-child {
   color: var(--color-primary);
 }
 
-.section__room_detail #tab__1 .room__status{
+.section__room_detail .overview .room__status {
   padding: 1rem;
 }
 
-.section__room_detail #tab__1 .room__status h5{
+.section__room_detail .overview .room__status h5 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   text-transform: capitalize;
   border-bottom: 1px solid var(--color-dark-trans-2);
 }
 
-
-.section__room_detail #tab__1 .room__status .booked_dates{
+.section__room_detail .overview .room__status .booked_dates {
   list-style: none;
   font-size: 1.5rem;
   margin-top: 1rem;
 }
-.section__room_detail #tab__1 .room__status .booked_dates li{
+.section__room_detail .overview .room__status .booked_dates li {
   color: var(--color-dark-trans);
 }
 
-.section__room_detail .room__detail_actions{
+.section__room_detail .room__detail_actions {
   width: 100%;
   text-align: center;
 }
 
-.section__room_detail .secondary__link_btn{
+.section__room_detail .secondary__link_btn {
   display: inline-block;
   background-color: #000;
   color: #fff;
   padding: 2rem 3rem;
   font-size: 1rem;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
-.section__room_detail .secondary__link_btn:hover{
+.section__room_detail .secondary__link_btn:hover {
   background-color: #000;
 }
 
-
-.section__room_detail #tab__2{
+.section__room_detail .amenities {
   width: 100%;
 }
 
-.section__room_detail #tab__2 h3{
+.section__room_detail .amenities h3 {
   margin-bottom: 2rem;
   text-transform: capitalize;
-} 
+}
 
-.section__room_detail #tab__2 p{
+.section__room_detail .amenities p {
   margin-bottom: 2rem;
-} 
+}
 
-.section__room_detail #tab__2 ul{
+.section__room_detail .amenities ul {
   list-style: none;
 }
 
-.section__room_detail #tab__2 li{
+.section__room_detail .amenities li {
   background-color: var(--color-primary-trans);
   margin: 1px 0;
   text-transform: capitalize;
@@ -399,7 +358,7 @@
   align-items: center;
 }
 
-.section__room_detail #tab__2 i{
+.section__room_detail .amenities i {
   font-size: 2.5rem;
   background-color: var(--color-primary);
   color: #fff;
@@ -410,24 +369,24 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-} 
+}
 
-.section__room_detail #tab__3{
+.section__room_detail .fags {
   width: 100%;
 }
 
-.section__room_detail #tab__3 .accordion{
+.section__room_detail .fags .accordion {
   width: 100%;
   list-style: none;
   margin-top: 2rem;
 }
 
-.section__room_detail #tab__3 .accordion li{
+.section__room_detail .fags .accordion li {
   width: 100%;
   margin: 1px 0;
 }
 
-.section__room_detail #tab__3 .accordion .accodion__control{
+.section__room_detail .fags .accordion .accodion__control {
   display: block;
   width: 100%;
   height: 100%;
@@ -441,41 +400,43 @@
   text-transform: capitalize;
 }
 
-.section__room_detail #tab__3 .accodion__control i{
+.section__room_detail .fags .accodion__control i {
   background-color: #000;
   color: #fff;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 50%;
   display: none;
   margin-right: 2rem;
 }
 
-.section__room_detail #tab__3 .accodion__control.active{
+.section__room_detail .fags .accodion__control.active {
   background-color: var(--color-primary);
   color: #fff;
 }
 
-.section__room_detail #tab__3 .accodion__control.active i.fa-minus{
+.section__room_detail .fags .accodion__control.active i.fa-minus {
   display: inline;
 }
 
-.section__room_detail #tab__3 .accodion__control:not(.active) i.fa-plus{
+.section__room_detail .fags .accodion__control:not(.active) i.fa-plus {
   display: inline;
 }
 
-.section__room_detail #tab__3 .accodion__panel{
+.section__room_detail .fags .accodion__panel {
   background-color: #fff;
   padding: 2rem 0;
 }
 /********************** end of room detail  ************************/
 
 /********************** room booking  ************************/
-.section__room_booking{
-  height: calc(100vh - 30rem); /* 100vh - height of navbar (5rem) and page header (25rem) */
+.section__room_booking {
+  height: calc(
+    100vh - 30rem
+  ); /* 100vh - height of navbar (5rem) and page header (25rem) */
   position: relative;
 }
 
-.booking__form{
+.booking__form {
   font-family: var(--font-2);
   position: absolute;
   left: 50%;
@@ -489,18 +450,18 @@
   padding: 2rem 0;
 }
 
-.booking__form form{
+.booking__form form {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.booking__form .form__group{
+.booking__form .form__group {
   margin-bottom: 2rem;
 }
 
-.booking__form input{
+.booking__form input {
   display: block;
   border: none;
   outline: none;
@@ -512,18 +473,18 @@
   margin-top: 1rem;
 }
 
-.booking__form .form__group{
+.booking__form .form__group {
   text-transform: capitalize;
   font-weight: 600;
   color: var(--color-dark-2);
 }
 
-.booked_form .form__action{
+.booked_form .form__action {
   width: 100%;
   text-align: right;
 }
 
-.booking__form button{
+.booking__form button {
   border: none;
   outline: none;
   cursor: pointer;
@@ -531,12 +492,117 @@
   border-radius: 10rem;
   background-color: var(--color-primary);
   color: #fff;
-  transition: all .3s;
+  transition: all 0.3s;
   float: right;
 }
 
-.booking__form button:hover{
+.booking__form button:hover {
   background-color: #000;
 }
 
 /********************** end of room booking  ************************/
+
+/********************** my bookings  ************************/
+.section__my_bookings .booking__wrapper {
+  font-family: var(--font-2);
+  background-color: #fff;
+  box-shadow: var(--light-shadow-3);
+  padding: 2rem;
+}
+
+.section__my_bookings .bookings .booking {
+  margin-bottom: 2rem;
+}
+
+.section__my_bookings .bookings .booking {
+  height: 40rem;
+}
+
+.section__my_bookings #active .booking, 
+.section__my_bookings #all .booking{
+  height: 50rem;
+}
+
+.section__my_bookings .booking__img_container {
+  width: 100%;
+  height: 40%;
+}
+
+.section__my_bookings .booking__img_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section__my_bookings .booking__detail {
+  width: 100%;
+  height: 60%;
+  list-style: none;
+  background-color: var(--color-primary-trans);
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+}
+
+.section__my_bookings .booking__detail li {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-dark-2);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.section__my_bookings .booking__detail li.last {
+  margin: 0;
+}
+
+.section__my_bookings .booking__detail li span {
+  color: var(--color-primary);
+}
+
+.section__my_bookings .booking__wrapper .secondary__link_btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  transition: all 0.3s;
+}
+
+.section__my_bookings .booking__wrapper .secondary__link_btn:hover {
+  background-color: #000;
+}
+
+.section__my_bookings .booking__detail .secondary__link_btn {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.section__my_bookings .bookings .booking__actions {
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: var(--color-primary-trans);
+  height: 20rem;
+}
+
+.bookings .booking__actions p {
+  color: var(--color-dark-2);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+}
+
+span.active__booking{
+  color: rgb(60, 228, 102) !important;
+}
+
+span.expired__booking{
+  color: var(--color-primary) !important;
+}
+
+.paypal {
+  width: 100%;
+}
+/********************** end of my bookings  ************************/

@@ -73,6 +73,7 @@ class BookedRoom(models.Model):
     start_date = models.DateField()
     duration = models.IntegerField()
     end_date = models.DateField()
+    is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

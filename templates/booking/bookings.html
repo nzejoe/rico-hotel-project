@@ -3,28 +3,123 @@
 
 {% block title %}My Bookings{% endblock title %}
 
-{% block content %}
-    {% for booking in bookings %}
-        <div class="booking">
-            <img src="{{ booking.room.photo.url }}" alt="{{ booking.room.room_number }}" width="300px">
-            <p>{{ booking.room.room_number }}</p>
-            <p>{{ booking.room.room_type }}</p>
-            <p>{{ booking.room.room_type.price }}</p>
-            <p>Days staying: {{ booking.duration }} days</p>
-            <p>{{ booking.status }}</p>
-        </div>
-    {% empty %}
-        <p>You have no bookings!</p>
-        <p><a href="{% url 'room_list' %}">Book now</a></p>
-    {% endfor %}
-     {% if bookings|length != 0 %}
-        <div>
-        <p>Total cost: {{ total_cost }}</p>
-        <!-- Set up a container element for the button -->
-        <div id="paypal-button-container"></div>
+
+{% block page__title %}
+    <div class="page__header">
+        <h1>my bookings</h1>
     </div>
-     {% endif %}
-    <a href="{% url 'room_list' %}">Go to rooms</a>
+{% endblock page__title %}
+
+{% block content %}
+    <section class="section section__my_bookings page__section">
+        <div class="section__wrapper">
+            <div class="booking__wrapper">
+                <ul class="tab__list">
+                    <li class="active"><a href="#pending" class="tab__control">pending bookings</a></li>
+                    <li><a href="#active" class="tab__control">active bookings</a></li>
+                    <li ><a href="#all" class="tab__control">all bookings</a></li>
+                </ul>
+                <div class="tab__panel bookings active" id="pending">
+                    {% for booking in pending_bookings %}
+                        <div class="booking" >
+                            <div class="booking__img_container">
+                                <img src="{{ booking.room.photo.url }}" alt="{{ booking.room.room_number }}">
+                            </div>
+                            <ul class="booking__detail">
+                                <li><span>room number:</span> {{ booking.room.room_number }}</li>
+                                <li><span>room type:</span> {{ booking.room.room_type }}</li>
+                                <li><span>price per night:</span> ${{ booking.room.room_type.price }}</li>
+                                <li><span>number of nights:</span> {{ booking.duration }}</li>
+                                <li class="last"><span>booking status:</span> {{ booking.status }}</li>
+                                <a class="secondary__link_btn" href="{% url 'room_detail' booking.room.slug %}">view detail</a>
+                            </ul>
+                        </div>
+                    {% empty %}
+                        <div class="booking__detail">
+                            <p>You have no pending bookings!</p>
+                        </div>
+                        <div class="booking_actions">
+                            <a class="secondary__link_btn" href="{% url 'room_list' %}">Book now</a>
+                        </div>
+                    {% endfor %}
+                    {% if bookings|length != 0 %}
+                        <div class="booking__actions">
+                            <p><span>Total cost:</span> ${{ total_cost }}</p>
+                            <!-- Set up a container element for the button -->
+                            <div id="paypal-button-container" class="paypal"></div>
+                        </div>
+                    <a class="secondary__link_btn" href="{% url 'room_list' %}">book another room</a>
+                    {% endif %}
+                </div>
+                <div class="tab__panel bookings" id="active">
+                    {% for booking in active_bookings %}
+                        <div class="booking" >
+                            <div class="booking__img_container">
+                                <img src="{{ booking.room.photo.url }}" alt="{{ booking.room.room_number }}">
+                            </div>
+                            <ul class="booking__detail">
+                                <li><span>room number:</span> {{ booking.room.room_number }}</li>
+                                <li><span>room type:</span> {{ booking.room.room_type }}</li>
+                                <li><span>price per night:</span> ${{ booking.cost }}</li>
+                                <li><span>number of nights:</span> {{ booking.duration }}</li>
+                                <li><span>check in:</span> {{ booking.start_date }}</li>
+                                <li><span>check out:</span> {{ booking.end_date }}</li>
+                                <li><span>total cost:</span> ${{ booking.total_cost }}</li>
+                                <li class="last"><span>booking status:</span> 
+                                    {% if booking.is_active %} 
+                                        <span class="active__booking">active</span>
+                                    {% else %}
+                                        <span class="expired__booking">expired</span>
+                                    {% endif %}
+                                </li>
+                                {% comment %} <a class="secondary__link_btn" href="{% url 'room_detail' booking.room.slug %}">view detail</a> {% endcomment %}
+                            </ul>
+                        </div>
+                    {% empty %}
+                        <div class="booking__detail">
+                            <p>You have no active bookings!</p>
+                        </div>
+                        <div class="booking_actions">
+                            <a class="secondary__link_btn" href="{% url 'room_list' %}">Book now</a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="tab__panel bookings" id="all">
+                    {% for booking in all_bookings %}
+                        <div class="booking" >
+                            <div class="booking__img_container">
+                                <img src="{{ booking.room.photo.url }}" alt="{{ booking.room.room_number }}">
+                            </div>
+                            <ul class="booking__detail">
+                                <li><span>room number:</span> {{ booking.room.room_number }}</li>
+                                <li><span>room type:</span> {{ booking.room.room_type }}</li>
+                                <li><span>price per night:</span> ${{ booking.cost }}</li>
+                                <li><span>number of nights:</span> {{ booking.duration }}</li>
+                                <li><span>check in:</span> {{ booking.start_date }}</li>
+                                <li><span>check out:</span> {{ booking.end_date }}</li>
+                                <li><span>total cost:</span> ${{ booking.total_cost }}</li>
+                                <li class="last"><span>booking status:</span> 
+                                    {% if booking.is_active %} 
+                                        <span class="active__booking">active</span>
+                                    {% else %}
+                                        <span class="expired__booking">expired</span>
+                                    {% endif %}
+                                </li>
+                                {% comment %} <a class="secondary__link_btn" href="{% url 'room_detail' booking.room.slug %}">view detail</a> {% endcomment %}
+                            </ul>
+                        </div>
+                    {% empty %}
+                        <div class="booking__detail">
+                            <p>You haven't booked any room yet!</p>
+                        </div>
+                        <div class="booking_actions">
+                            <a class="secondary__link_btn" href="{% url 'room_list' %}">Book now</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}
 {% block script %}
 {% comment %} only include when there is booking {% endcomment %}
