@@ -12,7 +12,7 @@
 <section class="section section__room_booking page__section">
     <div class="section__wrapper">
         <div class="booking__form">
-            <form action="{% url 'book_room' room.slug %}" method="POST">
+            <form action="{% url 'book_room' room.slug %}" method="POST" class="form">
                 {% csrf_token %}
                 <p>{{ form.non_field_errors }}</p>
                 <div>

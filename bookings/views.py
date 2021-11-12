@@ -1,6 +1,6 @@
 import datetime
 import json
-from django.contrib.admin.sites import site
+from django.contrib import messages
 
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -10,8 +10,9 @@ from .models import Booking, Payment, BookingDetail, BookedRoom
 from .forms import BookingForm
 from rooms.models import Room
 from customers.models import Customer
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='login')
 def my_bookings(request, total_cost=0):
     current_customer = request.user.customer
     pending_bookings = Booking.objects.filter(customer=current_customer, status='Pending')
@@ -29,7 +30,7 @@ def my_bookings(request, total_cost=0):
     }
     return render(request, 'booking/bookings.html', context)
 
-
+@login_required(login_url='login')
 def book_room(request, slug):
     room = Room.objects.get(slug=slug)
     current_customer = request.user.customer
@@ -63,7 +64,7 @@ def book_room(request, slug):
 
     return render(request, 'booking/book_room.html', context)
 
-
+@login_required(login_url='login')
 def payment(request, total_cost=0):
     if request.body:
         data = json.loads(request.body)

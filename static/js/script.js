@@ -373,3 +373,34 @@ $(document).ready(function () {
 
   //******************** end of section room detail  *************************/
 });
+
+
+// messages
+setTimeout(()=>{
+  $('.messages').fadeOut('slow'); // remove message after 4sec
+}, 4000)
+
+// password
+$('.form__group').each(function(){ // loop through all form group
+  const $this = $(this); // this is current group
+  const faPass = $this.find('.fa__pass'); // get the icons
+  faPass.on('click', function(){
+    const passInput = $this.find('#password');
+    const inputType = passInput.attr('type');
+    
+    faPass.toggleClass('show'); // toggle icon
+
+    switch(inputType){
+      case 'password':
+        passInput.attr("type", "text");
+        break;
+      case 'text':
+        passInput.attr("type", "password");
+        break;
+      default:
+        passInput.attr("type", "password");
+        break;
+    }
+    console.log(inputType)
+  })
+});

@@ -3,6 +3,7 @@
   background-color: var(--background-red-trans);
   margin-top: -5rem;
   padding-top: 15rem;
+  font-family: var(--font-2);
 }
 
 .room__list {
@@ -430,14 +431,11 @@
 
 /********************** room booking  ************************/
 .section__room_booking {
-  height: calc(
-    100vh - 30rem
-  ); /* 100vh - height of navbar (5rem) and page header (25rem) */
+  height: calc(100vh - 30rem); /* 100vh - height of navbar (5rem) and page header (25rem) */
   position: relative;
 }
 
 .booking__form {
-  font-family: var(--font-2);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -450,54 +448,13 @@
   padding: 2rem 0;
 }
 
-.booking__form form {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.booking__form .form{
+  width: 50%;
+  margin: auto;
 }
 
-.booking__form .form__group {
+.booking__form .form__group{
   margin-bottom: 2rem;
-}
-
-.booking__form input {
-  display: block;
-  border: none;
-  outline: none;
-  width: 100%;
-  height: 3rem;
-  border-radius: 10rem;
-  padding: 2rem;
-  background-color: var(--color-primary-trans);
-  margin-top: 1rem;
-}
-
-.booking__form .form__group {
-  text-transform: capitalize;
-  font-weight: 600;
-  color: var(--color-dark-2);
-}
-
-.booked_form .form__action {
-  width: 100%;
-  text-align: right;
-}
-
-.booking__form button {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 1rem 2rem;
-  border-radius: 10rem;
-  background-color: var(--color-primary);
-  color: #fff;
-  transition: all 0.3s;
-  float: right;
-}
-
-.booking__form button:hover {
-  background-color: #000;
 }
 
 /********************** end of room booking  ************************/
@@ -606,3 +563,76 @@ span.expired__booking{
   width: 100%;
 }
 /********************** end of my bookings  ************************/
+
+/********************** athentication  ************************/
+.section__authentication{
+  height: 60rem; /* 100vh - height of navbar (5rem) and page header (25rem) */
+  position: relative;
+  padding-top: 5rem;
+}
+.login__form {
+  width: 31.9rem;
+  max-width: 50rem;
+  /* height: 40rem; */
+  box-shadow: var(--light-shadow-2);
+  background-color: #fff;
+  padding: 2rem 0;
+  margin: auto;
+}
+
+.login__form .form{
+  position: static;
+  width: 100%;
+  padding-bottom: 2rem;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 2rem;
+}
+
+.login__form .form__group{
+  position: relative;
+}
+
+.login__form h3{
+  text-align: center;
+  border-bottom: 1px solid var(--color-dark-trans-2);
+  padding-bottom: 2rem;
+  color: var(--color-dark-2);
+}
+
+.login__form .form button{
+  float: none;
+}
+
+.login__form .fa-envelope,
+.login__form .fa-key{
+  position: relative;
+  background-color: var(--color-primary-trans);
+  padding: .9rem;
+  color: var(--color-dark-2);
+  font-size: 2.2rem;
+  top: -4rem;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.login__form .fa__pass{
+  position: absolute;
+  right: 1rem;
+  bottom: 5.25rem;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.login__form .fa__pass:hover{
+  color: var(--color-primary);
+}
+
+.fa__pass.show{
+  visibility: visible;
+}
+
+.login__form input{
+  padding-left: 4.5rem;
+}
+/********************** end of authentication  ************************/

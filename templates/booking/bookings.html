@@ -38,17 +38,13 @@
                         <div class="booking__detail">
                             <p>You have no pending bookings!</p>
                         </div>
-                        <div class="booking_actions">
-                            <a class="secondary__link_btn" href="{% url 'room_list' %}">Book now</a>
-                        </div>
                     {% endfor %}
-                    {% if bookings|length != 0 %}
+                    {% if pending_bookings|length != 0 %}
                         <div class="booking__actions">
                             <p><span>Total cost:</span> ${{ total_cost }}</p>
                             <!-- Set up a container element for the button -->
                             <div id="paypal-button-container" class="paypal"></div>
                         </div>
-                    <a class="secondary__link_btn" href="{% url 'room_list' %}">book another room</a>
                     {% endif %}
                 </div>
                 <div class="tab__panel bookings" id="active">
@@ -78,9 +74,6 @@
                     {% empty %}
                         <div class="booking__detail">
                             <p>You have no active bookings!</p>
-                        </div>
-                        <div class="booking_actions">
-                            <a class="secondary__link_btn" href="{% url 'room_list' %}">Book now</a>
                         </div>
                     {% endfor %}
                 </div>
@@ -112,18 +105,20 @@
                         <div class="booking__detail">
                             <p>You haven't booked any room yet!</p>
                         </div>
-                        <div class="booking_actions">
-                            <a class="secondary__link_btn" href="{% url 'room_list' %}">Book now</a>
-                        </div>
                     {% endfor %}
                 </div>
+                {% if pending_bookings|length != 0 or all_bookings|length != 0%}
+                    <a class="secondary__link_btn" href="{% url 'room_list' %}">book another room</a>
+                {% else %}
+                    <a class="secondary__link_btn" href="{% url 'room_list' %}">Book now</a>
+                {% endif %}
             </div>
         </div>
     </section>
 {% endblock content %}
 {% block script %}
 {% comment %} only include when there is booking {% endcomment %}
-{% if bookings|length != 0 %}
+{% if pending_bookings|length != 0 %}
     <!-- Include the PayPal JavaScript SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=AXTapKHFnZAgEtVF7-R-mP3GoTuMCpjxzWgGF7r8V7QgLfPyRUKMWodbQ2eu06fPk5jNN-GijGjS1Ejz&currency=USD"></script>
 
