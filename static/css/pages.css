@@ -566,14 +566,61 @@ span.expired__booking{
 
 /********************** athentication  ************************/
 .section__authentication{
-  height: 60rem; /* 100vh - height of navbar (5rem) and page header (25rem) */
+  height: auto; /* 100vh - height of navbar (5rem) and page header (25rem) */
   position: relative;
   padding-top: 5rem;
 }
+
+.section__authentication h3{
+  text-align: center;
+  border-bottom: 1px solid var(--color-dark-trans-2);
+  padding-bottom: 2rem;
+  color: var(--color-dark-2);
+  text-transform: capitalize;
+}
+
+.section__authentication .form button{
+  float: none;
+}
+
+.section__authentication .fa-envelope,
+.section__authentication .fa-user,
+.section__authentication .fa-key{
+  position: relative;
+  background-color: var(--color-primary-trans);
+  padding: .9rem;
+  color: var(--color-dark-2);
+  font-size: 2.2rem;
+  top: -4rem;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.section__authentication .fa__pass{
+  position: absolute;
+  right: 1rem;
+  bottom: 5.25rem;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.section__authentication .fa__pass:hover{
+  color: var(--color-primary);
+}
+
+.fa__pass.show{
+  visibility: visible;
+}
+
+.section__authentication input{
+  padding-left: 4.5rem;
+}
+
+
+/* login */
 .login__form {
-  width: 31.9rem;
-  max-width: 50rem;
-  /* height: 40rem; */
+  width: 100%;
+  max-width: 35rem;
   box-shadow: var(--light-shadow-2);
   background-color: #fff;
   padding: 2rem 0;
@@ -593,46 +640,69 @@ span.expired__booking{
   position: relative;
 }
 
-.login__form h3{
+.verification__msg{
+  width: 100%;
+}
+
+.verification__msg p{
+  width: 100%;
+  max-width: 65rem;
   text-align: center;
-  border-bottom: 1px solid var(--color-dark-trans-2);
-  padding-bottom: 2rem;
-  color: var(--color-dark-2);
+  padding: 1.5rem;
+  text-align: center;
+  margin: auto;
+  background: #1b971b2d;
+  color: #1b971b;
+  font-size: 2rem;
+}
+/* end of log in */
+
+/* register */
+
+.register__form {
+  width: 100%;
+  max-width: 60rem;
+  box-shadow: var(--light-shadow-2);
+  background-color: #fff;
+  padding: 2rem 0;
+  margin: auto;
 }
 
-.login__form .form button{
-  float: none;
+.register__form .form{
+  padding: 2rem;
 }
 
-.login__form .fa-envelope,
-.login__form .fa-key{
+.register__form .form__group{
+  margin-bottom: 1.5rem;
   position: relative;
-  background-color: var(--color-primary-trans);
-  padding: .9rem;
-  color: var(--color-dark-2);
-  font-size: 2.2rem;
-  top: -4rem;
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
+}
+/* end of register */
+
+/* register complete */
+.register__complete_form{
+   width: 100%;
+  max-width: 60rem;
+  box-shadow: var(--light-shadow-2);
+  background-color: #fff;
+  padding: 2rem 0;
+  margin: auto;
 }
 
-.login__form .fa__pass{
-  position: absolute;
-  right: 1rem;
-  bottom: 5.25rem;
-  cursor: pointer;
-  visibility: hidden;
+.register__complete_form .form{
+  padding: 2rem;
 }
 
-.login__form .fa__pass:hover{
-  color: var(--color-primary);
+.register__complete_form .form__group{
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
-.fa__pass.show{
-  visibility: visible;
+.register__complete_form .group__wrapper{
+  margin-top: 4rem;
 }
 
-.login__form input{
-  padding-left: 4.5rem;
+.register__complete_form input{
+  padding-left: 2rem;
 }
+/* end of register complete */
 /********************** end of authentication  ************************/

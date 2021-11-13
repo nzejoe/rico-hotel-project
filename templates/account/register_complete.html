@@ -1,28 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% if reg_user %}
-        <form action="{% url 'register_complete' %}" method="post">
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-            {% for field in  form %}
-               <div>
-                {{ field.label }}
-                {{ field }}
-                {{ field.errors }}</div>
-            {% endfor %}
-            <button type="submit">Submit</button>
-            {% comment "send back the email address to be used to identify the user" %}{% endcomment %}
-            <input type="text" name="email" value={{ reg_user.email }} hidden> 
-        </form>
-    {% else %}
-        <h4>Invalid link</h4>
-    {% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Registration completion{% endblock title %}
+
+{% block page__title %}
+    <div class="page__header">
+        <h1>welcome</h1>
+    </div>
+{% endblock page__title %}
+
+{% block content %}
+    <section class="section section__authentication page__section register">
+        <div class="section__wrapper">
+            {% if reg_user %}
+                <div class="register__complete_form">
+                    <form action="{% url 'register_complete' %}" method="post" class="form">
+                        <h3>Complete your registration</h3>
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="group__wrapper">
+                            {% for field in  form %}
+                            <div class="form__group">
+                                {{ field.label }}
+                                {{ field }}
+                                {{ field.errors }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button type="submit">Submit</button>
+                        {% comment "send back the email address to be used to identify the user" %}{% endcomment %}
+                        <input type="hidden" name="email" value={{ reg_user.email }}> 
+                    </form>
+                </div>
+            {% else %}
+                <div class="invalid__link">
+                    <h4>Invalid link</h4>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}

@@ -5,13 +5,15 @@ from .models import Account
 
 
 class RegisterForm(forms.ModelForm):
-    password2 = forms.CharField(widget=forms.PasswordInput())
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password'}))
 
     class Meta:
         model = Account
         fields = ['username', 'email', 'password', 'password2']
         widgets = {
-            'password': forms.PasswordInput(attrs={'type': 'password'}),
+            'password': forms.PasswordInput(attrs={'type': 'password', 'placeholder': 'Password'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Username'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Email address'}),
         }
 
     def clean(self):

@@ -306,7 +306,7 @@ section.section__blog .lSAction > a {
   width: 100%;
 }
 
-.form__group input {
+.form__group input, .form__group select{
   display: block;
   border: none;
   outline: none;
@@ -316,6 +316,22 @@ section.section__blog .lSAction > a {
   padding: 2rem;
   background-color: var(--color-primary-trans);
   margin-top: 1rem;
+}
+
+.form__group select{
+  width: 15rem;
+  padding: 1rem;
+  height: 5rem;
+  /* border: none;
+  outline: none;
+  border-radius: 10rem;
+  background-color: var(--color-primary-trans);
+  margin-top: 1rem; */
+}
+
+.form__group select option:hover{
+  background-color: var(--color-primary);
+  color: #000;
 }
 
 .form .form__action {
@@ -362,15 +378,14 @@ section.section__blog .lSAction > a {
 /************* end of form ****************/
 
 /************* messages ****************/
-.messages {
+.messages, .errorlist, .invalid__link {
   position: relative;
   width: 100%;
-  margin-bottom: 2rem;
   max-width: 40rem;
   margin: auto;
 }
 
-.messages p {
+.messages p, .nonfield, .invalid__link h4 {
   text-align: center;
   padding: 1.5rem;
   text-align: center;
@@ -381,8 +396,13 @@ section.section__blog .lSAction > a {
   color: #1b971b;
 }
 
-.messages .error {
+.messages .error, .errorlist, .invalid__link {
   background: #ff0b0b2c;
   color: #e00505;
 }
+
+.errorlist {
+  list-style: none;
+}
+
 /************* end of messages ****************/

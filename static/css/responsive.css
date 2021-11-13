@@ -235,6 +235,18 @@
     flex: 0 0 calc((100% / 2));
   }
   /* end of room detail */
+
+  /* register form */
+  .group__wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .group__wrapper .form__group{
+    flex: 0 0 calc((100% / 2) - 2rem);
+  }
+  /* end of register form */
 }
 
 @media screen and (min-width: 760px) {

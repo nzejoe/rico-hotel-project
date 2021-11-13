@@ -2,25 +2,57 @@
 
 {% block title %}Account register{% endblock title %}
 
-{% block content %}
-    {% include 'include/messages.html' %}
-    <div>
-        <h1>Register</h1>
-        <form action="{% url 'register' %}" method="post">
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-            {% for field in form %}
-            <div>
-            {{field.label}}
-            {{ field }}
-            {{ field.error }}
-            </div>
-            {% endfor %}
-            <button type="submit">register</button>
-        </form>
-        <small>
-            Already have an account? 
-            <a href="{% url 'login' %}">Log in</a>
-        </small>
+{% block page__title %}
+    <div class="page__header">
+        <h1>welcome</h1>
     </div>
+{% endblock page__title %}
+
+{% block content %}
+    <section class="section section__authentication page__section register">
+        <div class="section__wrapper">
+            <div class="register__form">
+                <h3>Register</h3>
+                <form action="{% url 'register' %}" method="post" class="form">
+                    {% include 'include/messages.html' %}
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="group__wrapper">
+                        <div class="form__group">
+                            <label for="username">Username</label>
+                            {{form.username}}
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form__group">
+                            <label for="email">Email</label>
+                            {{form.email}}
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="form__group">
+                            <label for="password">Password</label>
+                            {{form.password}}
+                            <i class="fas fa-key"></i>
+                            <i class="fas fa-eye fa__pass show"></i>
+                            <i class="fas fa-eye-slash fa__pass"></i>
+                        </div>
+                        <div class="form__group">
+                            <label for="password2">Confirm password</label>
+                            {{form.password2}}
+                            <i class="fas fa-key"></i>
+                            <i class="fas fa-eye fa__pass show"></i>
+                            <i class="fas fa-eye-slash fa__pass"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit">register</button>
+                    <div class="form__links">
+                        <small>
+                            Already have an account? 
+                            <a href="{% url 'login' %}">Log in</a>
+                        </small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

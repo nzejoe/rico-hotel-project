@@ -15,7 +15,7 @@
             <div class="verification__msg">
                 <p>
                     Account verification has been sent to your email, [{{request.GET.email}}] <br/>
-                    Please check your email box to verify and complete your registration.
+                    Please check your mail box to verify and complete your registration.
                 </p>
             </div>
         {% else %}
@@ -41,12 +41,12 @@
                     </div>
                     <div class="form__links">
                         <p>
-                        Forgot password? 
-                        <a href="{% url 'password_reset' %}">Reset password</a>
+                            Need an account? 
+                            <a href="{% url 'register' %}">Register</a>
                         </p>
                         <p>
-                        Need an account? 
-                            <a href="{% url 'register' %}">Register</a>
+                            Forgot password? 
+                            <a href="{% url 'password_reset' %}">Reset password</a>
                         </p>
                     </div>
                 </form>

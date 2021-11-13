@@ -376,18 +376,19 @@ $(document).ready(function () {
 
 
 // messages
-setTimeout(()=>{
-  $('.messages').fadeOut('slow'); // remove message after 4sec
-}, 4000)
+setTimeout(() => {
+  $(".messages").fadeOut("slow"); // remove message after 4sec
+  $(".errorlist").fadeOut("slow"); // remove error message after 4sec
+}, 5000)
 
 // password
 $('.form__group').each(function(){ // loop through all form group
   const $this = $(this); // this is current group
   const faPass = $this.find('.fa__pass'); // get the icons
   faPass.on('click', function(){
-    const passInput = $this.find('#password');
+    const passInput = $this.find('input');
     const inputType = passInput.attr('type');
-    
+
     faPass.toggleClass('show'); // toggle icon
 
     switch(inputType){
@@ -401,6 +402,6 @@ $('.form__group').each(function(){ // loop through all form group
         passInput.attr("type", "password");
         break;
     }
-    console.log(inputType)
+    
   })
 });

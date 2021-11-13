@@ -106,7 +106,7 @@ def account_verification(request, uidb64, token):
         messages.error(request, 'verification link has expired')
         return redirect('register')
 
-def register_complete(request):
+def register_complete(request, user=None):
     form = CustomerForm(None)
     user_id = request.session.get('user_id')
     try:
@@ -140,6 +140,10 @@ def register_complete(request):
 
             customer.save()
             messages.success(request, 'Account registration completed successfully!')
+            # delete session id after successful registration
+            del request.session['user_id']
+            request.session.modified = True
+            
             return redirect(reverse('login'))
         else:
             form = CustomerForm(None)
