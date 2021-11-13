@@ -260,8 +260,6 @@
   margin-top: 2rem;
 }
 
-
-
 .section__room_detail .overview h3 {
   margin-bottom: 2rem;
   text-transform: capitalize;
@@ -431,7 +429,9 @@
 
 /********************** room booking  ************************/
 .section__room_booking {
-  height: calc(100vh - 30rem); /* 100vh - height of navbar (5rem) and page header (25rem) */
+  height: calc(
+    100vh - 30rem
+  ); /* 100vh - height of navbar (5rem) and page header (25rem) */
   position: relative;
 }
 
@@ -448,12 +448,12 @@
   padding: 2rem 0;
 }
 
-.booking__form .form{
+.booking__form .form {
   width: 50%;
   margin: auto;
 }
 
-.booking__form .form__group{
+.booking__form .form__group {
   margin-bottom: 2rem;
 }
 
@@ -475,8 +475,8 @@
   height: 40rem;
 }
 
-.section__my_bookings #active .booking, 
-.section__my_bookings #all .booking{
+.section__my_bookings #active .booking,
+.section__my_bookings #all .booking {
   height: 50rem;
 }
 
@@ -551,11 +551,11 @@
   justify-content: space-between;
 }
 
-span.active__booking{
+span.active__booking {
   color: rgb(60, 228, 102) !important;
 }
 
-span.expired__booking{
+span.expired__booking {
   color: var(--color-primary) !important;
 }
 
@@ -565,13 +565,13 @@ span.expired__booking{
 /********************** end of my bookings  ************************/
 
 /********************** athentication  ************************/
-.section__authentication{
+.section__authentication {
   height: auto; /* 100vh - height of navbar (5rem) and page header (25rem) */
   position: relative;
   padding-top: 5rem;
 }
 
-.section__authentication h3{
+.section__authentication h3 {
   text-align: center;
   border-bottom: 1px solid var(--color-dark-trans-2);
   padding-bottom: 2rem;
@@ -579,43 +579,47 @@ span.expired__booking{
   text-transform: capitalize;
 }
 
-.section__authentication .form button{
+.section__authentication .form {
+  padding: 2rem;
+}
+
+.section__authentication .form button {
   float: none;
 }
 
 .section__authentication .fa-envelope,
 .section__authentication .fa-user,
-.section__authentication .fa-key{
-  position: relative;
+.section__authentication .fa-key {
+  position: absolute;
   background-color: var(--color-primary-trans);
-  padding: .9rem;
+  padding: 0.9rem;
   color: var(--color-dark-2);
   font-size: 2.2rem;
-  top: -4rem;
+  top: 2.8rem;
+  left: 0;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
 }
 
-.section__authentication .fa__pass{
+.section__authentication .fa__pass {
   position: absolute;
   right: 1rem;
-  bottom: 5.25rem;
+  bottom: 1.25rem;
   cursor: pointer;
   visibility: hidden;
 }
 
-.section__authentication .fa__pass:hover{
+.section__authentication .fa__pass:hover {
   color: var(--color-primary);
 }
 
-.fa__pass.show{
+.fa__pass.show {
   visibility: visible;
 }
 
-.section__authentication input{
+.section__authentication input {
   padding-left: 4.5rem;
 }
-
 
 /* login */
 .login__form {
@@ -627,7 +631,7 @@ span.expired__booking{
   margin: auto;
 }
 
-.login__form .form{
+.login__form .form {
   position: static;
   width: 100%;
   padding-bottom: 2rem;
@@ -636,15 +640,15 @@ span.expired__booking{
   padding: 2rem;
 }
 
-.login__form .form__group{
+.login__form .form__group {
   position: relative;
 }
 
-.verification__msg{
+.verification__msg {
   width: 100%;
 }
 
-.verification__msg p{
+.verification__msg p {
   width: 100%;
   max-width: 65rem;
   text-align: center;
@@ -668,19 +672,19 @@ span.expired__booking{
   margin: auto;
 }
 
-.register__form .form{
-  padding: 2rem;
-}
-
-.register__form .form__group{
+.register__form .form__group {
   margin-bottom: 1.5rem;
   position: relative;
+}
+
+.register__form .fa__pass{
+  bottom: 2.25rem;
 }
 /* end of register */
 
 /* register complete */
-.register__complete_form{
-   width: 100%;
+.register__complete_form {
+  width: 100%;
   max-width: 60rem;
   box-shadow: var(--light-shadow-2);
   background-color: #fff;
@@ -688,21 +692,95 @@ span.expired__booking{
   margin: auto;
 }
 
-.register__complete_form .form{
-  padding: 2rem;
-}
-
-.register__complete_form .form__group{
+.register__complete_form .form__group {
   margin-bottom: 1.5rem;
   position: relative;
 }
 
-.register__complete_form .group__wrapper{
+.register__complete_form .group__wrapper {
   margin-top: 4rem;
 }
 
-.register__complete_form input{
+.register__complete_form input {
   padding-left: 2rem;
 }
 /* end of register complete */
+
+/* password reset form */
+.password__reset_form {
+  width: 100%;
+  max-width: 35rem;
+  box-shadow: var(--light-shadow-2);
+  background-color: #fff;
+  padding: 2rem 0;
+  margin: auto;
+}
+
+.password__reset_form .form__group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.password__reset_form .form__text {
+  margin-bottom: 1.5rem;
+}
+/* end of password reset form */
+
+/* password reset done */
+
+.password__reset_done h4, .password__reset_done p{
+  width: 100%;
+  max-width: 65rem;
+  text-align: center;
+  padding: 1.5rem;
+  text-align: center;
+  margin: auto;
+  background: #1b971b2d;
+  color: #1b971b;
+  font-size: 2rem;
+}
+
+.password__reset_done a,
+.password__reset_done a:link,
+.password__reset_done a:visited{
+  text-decoration: none;
+  color: #0000ff;
+}
+
+.password__reset_done a:hover{
+  text-decoration: underline;
+}
+/* end of password reset done */
+
+/* password reset done */
+.password__reset_complete {
+  width: 100%;
+  max-width: 35rem;
+  box-shadow: var(--light-shadow-2);
+  background-color: #fff;
+  padding: 2rem 0;
+  margin: auto;
+}
+
+.password__reset_complete .form__group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+/* end of password reset done */
+
+/* password change */
+.password__change {
+  width: 100%;
+  max-width: 35rem;
+  box-shadow: var(--light-shadow-2);
+  background-color: #fff;
+  padding: 2rem 0;
+  margin: auto;
+}
+
+.password__change .form__group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+/* end of password change */
 /********************** end of authentication  ************************/
