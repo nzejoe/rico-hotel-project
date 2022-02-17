@@ -348,10 +348,10 @@ $(document).ready(function () {
 
   $("ul.accordion").each(function () {
     const $this = $(this);
-    $this.on("click", ".accodion__control", function (e) {
+    $this.on("click", ".accordion__control", function (e) {
       // this code order must be maintained
       e.preventDefault();
-      const activeControl = $(".accodion__control.active");
+      const activeControl = $(".accordion__control.active");
 
       // 1st: toggle active class
       $(this).addClass("active").next().not(":animated").slideToggle();
@@ -404,4 +404,24 @@ $('.form__group').each(function(){ // loop through all form group
     }
     
   })
+});
+
+// check button
+const all = $("#all");
+const options = $(".option");
+
+all.on('change', function(e){
+  if(e.target.checked){
+    options.each(function(){
+      this.checked = all.prop('checked')
+    })
+  }
+});
+
+options.each(function () {
+    $(this).on('change', function(e){
+      if(!this.checked){
+        all[0].checked = false;
+      }
+    })
 });

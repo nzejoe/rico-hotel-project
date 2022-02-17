@@ -380,4 +380,22 @@
     height: 60rem;
   }
   /* end of modal */
+
+  /* fags */
+  .section__fags .section__wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    justify-content: space-between;
+  }
+
+  .section__fags .section__wrapper aside{
+    grid-column: 1 / 2;
+  }
+
+  .section__fags .section__wrapper .content{
+    grid-column: 2 / -1;
+  }
+
+  /* end of fags */
 }

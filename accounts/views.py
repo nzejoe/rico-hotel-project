@@ -1,3 +1,4 @@
+import re
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -21,12 +22,18 @@ def home(request):
     return render(request, 'home.html')
 
 
+def fags(request):
+    """renders frequently asked question page"""
+    return render(request, 'fags.html')
+
+
 def account_login(request):
+    if request.GET.get('next'): # if it is a redirect login
+        request.session['next'] = request.GET.get('next')
 
     if request.user.is_authenticated:  # if already logged in
         return redirect(reverse('home'))
     else:
-
         if request.method == "POST":
             email = request.POST.get('email')
             password = request.POST.get('password')
@@ -34,6 +41,8 @@ def account_login(request):
             account = authenticate(email=email, password=password)
             if account is not None:
                 login(request, account)
+                if request.session.get('next'): # if from login required
+                    return redirect(request.session.get('next'))
                 messages.success(request, 'You have been logged in succesfully!')
                 return redirect(reverse('home'))
             else:
@@ -57,7 +66,6 @@ def register(request):
     else:
         if request.method == 'POST':
             form = RegisterForm(request.POST)
-
             if form.is_valid():
                 user = Account.objects.create_user(
                     username=form.cleaned_data.get('username'),

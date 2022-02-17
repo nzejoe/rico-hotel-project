@@ -19,11 +19,12 @@ from django.urls.conf import include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from accounts.views import home
+from accounts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('', views.home, name='home'),
+    path('fags/', views.fags, name="fags"),
     path('account/', include('accounts.urls')),
     # path('customer/', include('customers.urls')),
     path('room/', include('rooms.urls')),
