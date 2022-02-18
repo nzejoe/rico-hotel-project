@@ -50,6 +50,11 @@ $(document).ready(function () {
   let timer;
 
   const move = (newIndex, position) => {
+    //  If current slide is showing or a slide is animating, then do nothing
+    if (slider.is(":animated")) {
+      return;
+    }
+
     if (currentIndex > newIndex) {
       animate = "-100%";
     } else {
@@ -81,12 +86,10 @@ $(document).ready(function () {
     }, 4000);
   };
   btnLeft.on("click", () => {
-    clearInterval(timer);
     move(currentIndex - 1, "100%");
   });
 
   btnRight.on("click", () => {
-    clearInterval(timer);
     move(currentIndex + 1, "-100%");
   });
 
@@ -226,9 +229,9 @@ $(document).ready(function () {
     const clonedSlides = photos.clone(); // clone slides
 
     // remove styles that's already present in the photos :- this is for room detail gallery
-    clonedSlides.each(function(){
+    clonedSlides.each(function () {
       $(this).removeAttr("style");
-    })
+    });
 
     modal.empty(); // first empty
 
@@ -300,7 +303,6 @@ $(document).ready(function () {
     const IGIndex = IGSlides.index(this);
     galleryViewHandler(IGSlides, IGIndex);
   });
-
 
   //******************** end of our footer section  *************************/
 
@@ -374,54 +376,53 @@ $(document).ready(function () {
   //******************** end of section room detail  *************************/
 });
 
-
 // messages
 setTimeout(() => {
   $(".messages").fadeOut("slow"); // remove message after 4sec
   $(".errorlist").fadeOut("slow"); // remove error message after 4sec
-}, 5000)
+}, 5000);
 
 // password
-$('.form__group').each(function(){ // loop through all form group
+$(".form__group").each(function () {
+  // loop through all form group
   const $this = $(this); // this is current group
-  const faPass = $this.find('.fa__pass'); // get the icons
-  faPass.on('click', function(){
-    const passInput = $this.find('input');
-    const inputType = passInput.attr('type');
+  const faPass = $this.find(".fa__pass"); // get the icons
+  faPass.on("click", function () {
+    const passInput = $this.find("input");
+    const inputType = passInput.attr("type");
 
-    faPass.toggleClass('show'); // toggle icon
+    faPass.toggleClass("show"); // toggle icon
 
-    switch(inputType){
-      case 'password':
+    switch (inputType) {
+      case "password":
         passInput.attr("type", "text");
         break;
-      case 'text':
+      case "text":
         passInput.attr("type", "password");
         break;
       default:
         passInput.attr("type", "password");
         break;
     }
-    
-  })
+  });
 });
 
 // check button
 const all = $("#all");
 const options = $(".option");
 
-all.on('change', function(e){
-  if(e.target.checked){
-    options.each(function(){
-      this.checked = all.prop('checked')
-    })
+all.on("change", function (e) {
+  if (e.target.checked) {
+    options.each(function () {
+      this.checked = all.prop("checked");
+    });
   }
 });
 
 options.each(function () {
-    $(this).on('change', function(e){
-      if(!this.checked){
-        all[0].checked = false;
-      }
-    })
+  $(this).on("change", function (e) {
+    if (!this.checked) {
+      all[0].checked = false;
+    }
+  });
 });
