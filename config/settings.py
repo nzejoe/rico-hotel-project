@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'customers',
     'rooms',
     'bookings',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -129,11 +130,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
-STATICFILES_DIRS = [
-    BASE_DIR.joinpath('static'),
-]
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
+# STATICFILES_DIRS = [
+#     BASE_DIR.joinpath('static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -155,4 +156,17 @@ EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env.str('EMAIL_PASSWORD')
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# AWS CONFIG
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME')
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+AWS_QUERYSTRING_AUTH= False # this will prevent access key and secret key append to static file url
+AWS_LOCATION = 'static'
+AWS_S3_FILE_OVERWRITE = False
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
