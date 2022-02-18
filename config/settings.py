@@ -131,10 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 # STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
-# STATICFILES_DIRS = [
-#     BASE_DIR.joinpath('static'),
-# ]
+# STATIC_ROOT = BASE_DIR.joinpath('staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -170,5 +167,8 @@ AWS_S3_FILE_OVERWRITE = False
 # AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 # STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR.joinpath('static'),
+]
 # STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
