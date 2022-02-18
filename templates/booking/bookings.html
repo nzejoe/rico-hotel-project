@@ -68,7 +68,7 @@
                                         <span class="expired__booking">expired</span>
                                     {% endif %}
                                 </li>
-                                {% comment %} <a class="secondary__link_btn" href="{% url 'room_detail' booking.room.slug %}">view detail</a> {% endcomment %}
+                                <a class="secondary__link_btn" href="{% url 'room_detail' booking.room.slug %}">view detail</a>
                             </ul>
                         </div>
                     {% empty %}
@@ -98,7 +98,7 @@
                                         <span class="expired__booking">expired</span>
                                     {% endif %}
                                 </li>
-                                {% comment %} <a class="secondary__link_btn" href="{% url 'room_detail' booking.room.slug %}">view detail</a> {% endcomment %}
+                                <a class="secondary__link_btn" href="{% url 'room_detail' booking.room.slug %}">view detail</a>
                             </ul>
                         </div>
                     {% empty %}
