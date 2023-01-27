@@ -28,7 +28,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = ['codegenesis-ricohotel.herokuapp.com', 'localhost', "https://rico-hotel.onrender.com"]
+ALLOWED_HOSTS = ['codegenesis-ricohotel.herokuapp.com', 'localhost', "rico-hotel.onrender.com"]
 
 
 # Application definition
